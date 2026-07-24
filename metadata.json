@@ -1,0 +1,6 @@
+{
+  "name": "Kefalonia Trip Match & Itinerary Planner",
+  "description": "Tinder-style activity voting and consensus itinerary planner for 5 travelers in Kefalonia staying at Villa Louke.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
