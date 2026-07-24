@@ -7,7 +7,7 @@ import { TRIP_DAYS, DEFAULT_MEMBERS } from './src/data/tripDates.js';
 import { RoomState, Vote, Activity, DayItinerary } from './src/types.js';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 app.use(express.json());
 

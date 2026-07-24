@@ -20,8 +20,32 @@ export default function App() {
 
   const [activeTab, setActiveTab] = useState<'swipe' | 'consensus' | 'itinerary' | 'cars' | 'ai'>('swipe');
   
+  const validMemberNames = DEFAULT_MEMBERS.map(m => m.name);
+
+  // Current user selection
+  const [currentUser, setCurrentUser] = useState<UserProfile>(() => {
+    const saved = localStorage.getItem('kefalonia_user');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (validMemberNames.includes(parsed.name)) {
+          return parsed;
+        }
+      } catch (e) {}
+    }
+    return DEFAULT_MEMBERS[0];
+  });
+
   // Track if user explicitly selected a profile
   const [hasChosenUser, setHasChosenUser] = useState<boolean>(() => {
+    const saved = localStorage.getItem('kefalonia_user');
+    if (!saved) return false;
+    try {
+      const parsed = JSON.parse(saved);
+      if (!validMemberNames.includes(parsed.name)) return false;
+    } catch (e) {
+      return false;
+    }
     return localStorage.getItem('kefalonia_user_chosen') === 'true';
   });
 
@@ -29,15 +53,6 @@ export default function App() {
   const [activeVotingDay, setActiveVotingDay] = useState<number>(() => {
     const saved = localStorage.getItem('kefalonia_active_voting_day');
     return saved ? parseInt(saved) : 1;
-  });
-
-  // Current user selection
-  const [currentUser, setCurrentUser] = useState<UserProfile>(() => {
-    const saved = localStorage.getItem('kefalonia_user');
-    if (saved) {
-      try { return JSON.parse(saved); } catch (e) {}
-    }
-    return DEFAULT_MEMBERS[0];
   });
 
   // Room state

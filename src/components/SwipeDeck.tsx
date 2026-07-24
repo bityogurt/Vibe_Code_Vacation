@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Activity, ActivityCategory, KefaloniaRegion, UserProfile, Vote, VoteType, RoomState, DayItinerary } from '../types';
-import { TRIP_DAYS } from '../data/tripDates';
+import { TRIP_DAYS, getMaxUnlockedVotingDay } from '../data/tripDates';
 
 interface SwipeDeckProps {
   roomState: RoomState;
@@ -50,6 +50,9 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   const [maxBudgetFilter, setMaxBudgetFilter] = useState<number>(100);
   const [isFlipped, setIsFlipped] = useState<boolean>(false);
   const [lastActionText, setLastActionText] = useState<string | null>(null);
+
+  // Unlocked days calculation based on date rule
+  const unlockedInfo = useMemo(() => getMaxUnlockedVotingDay(), []);
 
   // Current active day info
   const activeDayObj = TRIP_DAYS.find(d => d.dayNumber === activeVotingDay) || TRIP_DAYS[0];
@@ -163,15 +166,20 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
             <select
               value={activeVotingDay}
               onChange={(e) => onChangeVotingDay(Number(e.target.value))}
-              className="bg-slate-950 border border-slate-800 text-slate-200 text-[11px] font-semibold rounded-lg px-2 py-1 focus:outline-none"
+              className="bg-slate-950 border border-slate-800 text-indigo-300 text-[11px] font-bold rounded-lg px-2 py-1 focus:outline-none"
             >
-              {TRIP_DAYS.map(day => (
+              {TRIP_DAYS.filter(day => day.dayNumber <= unlockedInfo.maxDayNumber).map(day => (
                 <option key={day.dayNumber} value={day.dayNumber}>
                   Ziua {day.dayNumber}: {day.dayName.split(',')[1]}
                 </option>
               ))}
             </select>
           </div>
+        </div>
+
+        <div className="text-[10px] text-amber-400 font-medium px-1 flex items-center justify-between border-t border-slate-800/80 pt-1">
+          <span>🔒 {unlockedInfo.explanationText}</span>
+          <span className="text-slate-400">Pachet: {unswipedActivities.length} carduri rămase</span>
         </div>
 
         {/* Filters & Add Card inline */}
