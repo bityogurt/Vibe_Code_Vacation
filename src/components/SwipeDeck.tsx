@@ -144,98 +144,74 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   };
 
   return (
-    <div className="max-w-xl mx-auto px-4 py-4 flex flex-col items-center">
+    <div className="max-w-md mx-auto px-4 py-2 flex flex-col items-center">
       
-      {/* ACTIVE VOTING ROUND BANNER */}
-      <div className="w-full mb-4 bg-gradient-to-r from-rose-950/80 via-slate-900 to-indigo-950/80 p-4 rounded-2xl border border-rose-500/30 shadow-lg space-y-2.5">
+      {/* COMPACT ACTIVE VOTING DAY BAR */}
+      <div className="w-full mb-3 bg-slate-900 border border-slate-800 rounded-2xl p-3 shadow-md space-y-2">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-2">
-            <span className="relative flex h-3 w-3">
+            <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
             </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-rose-300">
-              Vot Deschis pentru Ziua {activeVotingDay}
+            <span className="text-xs font-bold text-white tracking-wide">
+              Vot Ziua {activeVotingDay} ({activeDayObj.dayName.split(',')[1]?.trim()})
             </span>
           </div>
 
-          <select
-            value={activeVotingDay}
-            onChange={(e) => onChangeVotingDay(Number(e.target.value))}
-            className="bg-slate-950 border border-slate-800 text-slate-300 text-[11px] font-semibold rounded-lg px-2 py-1 focus:outline-none"
-          >
-            {TRIP_DAYS.map(day => (
-              <option key={day.dayNumber} value={day.dayNumber}>
-                Alege Ziua {day.dayNumber}: {day.dayName.split(',')[1]}
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center gap-1">
+            <select
+              value={activeVotingDay}
+              onChange={(e) => onChangeVotingDay(Number(e.target.value))}
+              className="bg-slate-950 border border-slate-800 text-slate-200 text-[11px] font-semibold rounded-lg px-2 py-1 focus:outline-none"
+            >
+              {TRIP_DAYS.map(day => (
+                <option key={day.dayNumber} value={day.dayNumber}>
+                  Ziua {day.dayNumber}: {day.dayName.split(',')[1]}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-t border-slate-800/80 pt-2">
-          <div>
-            <h3 className="text-sm font-black text-white">{activeDayObj.dayName}</h3>
-            <p className="text-[11px] text-slate-300">{activeDayObj.theme}</p>
+        {/* Filters & Add Card inline */}
+        <div className="flex items-center justify-between gap-2 border-t border-slate-800/80 pt-2 text-xs">
+          <div className="flex items-center gap-1.5 flex-1">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="bg-slate-950 border border-slate-800 text-slate-300 text-[11px] rounded-lg p-1.5 focus:outline-none w-1/2"
+            >
+              <option value="all">Toate Categoriile</option>
+              <option value="beach">🏖️ Plaje</option>
+              <option value="hidden_gem">💎 Perle</option>
+              <option value="hike">🥾 Hike</option>
+              <option value="taverna">🍲 Taverne</option>
+              <option value="culture">🏛️ Cultură</option>
+              <option value="sunset">🌅 Apus</option>
+              <option value="boat_tour">🚤 Barca</option>
+            </select>
+
+            <select
+              value={selectedRegion}
+              onChange={(e) => setSelectedRegion(e.target.value)}
+              className="bg-slate-950 border border-slate-800 text-slate-300 text-[11px] rounded-lg p-1.5 focus:outline-none w-1/2"
+            >
+              <option value="all">Toate Regiunile</option>
+              <option value="South (Livatho/Lourdas)">📍 Sud</option>
+              <option value="North (Fiskardo/Assos)">📍 Nord</option>
+              <option value="West (Paliki/Lixouri)">📍 Vest</option>
+              <option value="East (Sami/Antisamos)">📍 Est</option>
+              <option value="Central (Argostoli/Ainos)">📍 Centru</option>
+            </select>
           </div>
 
-          <button
-            onClick={() => {
-              confetti({ particleCount: 70, spread: 80, origin: { y: 0.6 } });
-              onLockTop3ToDay(activeVotingDay);
-            }}
-            className="w-full sm:w-auto px-3.5 py-2 bg-gradient-to-r from-rose-500 to-indigo-600 hover:from-rose-400 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-md transition flex items-center justify-center gap-1.5 shrink-0"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-            🔒 Închide Votul & Pune TOP 3 în Ziua {activeVotingDay}
-          </button>
-        </div>
-      </div>
-
-      {/* Category & Region Filters */}
-      <div className="w-full mb-4 bg-slate-900/80 p-3 rounded-2xl border border-slate-800 shadow-md">
-        <div className="flex items-center justify-between text-xs text-slate-400 mb-2 font-medium">
-          <span className="flex items-center gap-1.5 text-slate-200">
-            <Filter className="w-3.5 h-3.5 text-amber-400" />
-            Filtrează Carduri ({unswipedActivities.length} rămase)
-          </span>
           <button 
             onClick={onOpenAddModal}
-            className="text-cyan-400 hover:underline flex items-center gap-1 font-semibold"
+            className="text-cyan-400 hover:text-cyan-300 text-[11px] font-bold shrink-0 bg-slate-950 border border-slate-800 px-2.5 py-1.5 rounded-lg"
           >
-            + Card Nou
+            + Card
           </button>
-        </div>
-
-        <div className="grid grid-cols-2 gap-2">
-          {/* Category Selector */}
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-lg p-2 focus:ring-1 focus:ring-rose-500 focus:outline-none"
-          >
-            <option value="all">Toate Categoriile</option>
-            <option value="beach">🏖️ Plaje & Golfuri</option>
-            <option value="hidden_gem">💎 Perle Ascunse</option>
-            <option value="hike">🥾 Hike & Natură</option>
-            <option value="taverna">🍲 Taverne & Mâncare</option>
-            <option value="culture">🏛️ Mănăstiri & Cultură</option>
-            <option value="sunset">🌅 Apus & Cocktails</option>
-            <option value="boat_tour">🚤 Croaziere Barca</option>
-          </select>
-
-          {/* Region Selector */}
-          <select
-            value={selectedRegion}
-            onChange={(e) => setSelectedRegion(e.target.value)}
-            className="bg-slate-950 border border-slate-800 text-slate-200 text-xs rounded-lg p-2 focus:ring-1 focus:ring-rose-500 focus:outline-none"
-          >
-            <option value="all">Toate Regiunile</option>
-            <option value="South (Livatho/Lourdas)">📍 Sud (Lângă Villa Louke)</option>
-            <option value="North (Fiskardo/Assos)">📍 Nord (Assos & Fiskardo)</option>
-            <option value="West (Paliki/Lixouri)">📍 Vest (Paliki & Lixouri)</option>
-            <option value="East (Sami/Antisamos)">📍 Est (Sami & Melissani)</option>
-            <option value="Central (Argostoli/Ainos)">📍 Centru (Argostoli & Ainos)</option>
-          </select>
         </div>
       </div>
 

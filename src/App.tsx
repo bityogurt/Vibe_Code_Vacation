@@ -7,6 +7,7 @@ import { CarLogisticsView } from './components/CarLogisticsView';
 import { AiAssistant } from './components/AiAssistant';
 import { AddActivityModal } from './components/AddActivityModal';
 import { UserSelectionModal } from './components/UserSelectionModal';
+import { WelcomeScreen } from './components/WelcomeScreen';
 import { RoomState, UserProfile, VoteType, Activity } from './types';
 import { INITIAL_ACTIVITIES } from './data/kefaloniaActivities';
 import { TRIP_DAYS, DEFAULT_MEMBERS } from './data/tripDates';
@@ -301,6 +302,15 @@ export default function App() {
     window.history.pushState({}, '', `?room=${newRoomId}`);
   };
 
+  if (!hasChosenUser) {
+    return (
+      <WelcomeScreen
+        members={roomState.members}
+        onSelectUser={handleSelectUser}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-rose-500 selection:text-white flex flex-col justify-between">
       <div>
@@ -316,25 +326,6 @@ export default function App() {
 
         {/* Main Tab Content */}
         <main className="pb-16">
-          {/* Initial Onboarding User Selection Banner if not explicitly selected */}
-          {!hasChosenUser && (
-            <div className="max-w-xl mx-auto px-4 pt-4">
-              <div className="bg-gradient-to-r from-amber-950/80 via-slate-900 to-indigo-950/80 p-4 rounded-2xl border border-amber-500/30 text-center space-y-2">
-                <p className="text-xs font-bold text-amber-300 uppercase tracking-wide">
-                  👋 Cine ești din grupul Villa Louke?
-                </p>
-                <p className="text-xs text-slate-300">
-                  Selectează-ți profilul pentru ca voturile tale să fie atribuite numelui tău pe telefon!
-                </p>
-                <button
-                  onClick={() => setIsUserModalOpen(true)}
-                  className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-md transition"
-                >
-                  Alege Numele Tău ({currentUser.name})
-                </button>
-              </div>
-            </div>
-          )}
 
           {activeTab === 'swipe' && (
             <SwipeDeck

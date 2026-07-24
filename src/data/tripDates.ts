@@ -60,9 +60,9 @@ export const TRIP_DAYS: DayItinerary[] = [
 ];
 
 export const DEFAULT_MEMBERS = [
-  { id: 'm1', name: 'Alex', avatarColor: 'bg-emerald-500', assignedCar: 'Car 1' as const },
-  { id: 'm2', name: 'Maria', avatarColor: 'bg-rose-500', assignedCar: 'Car 1' as const },
-  { id: 'm3', name: 'Andrei', avatarColor: 'bg-indigo-500', assignedCar: 'Car 2' as const },
-  { id: 'm4', name: 'Elena', avatarColor: 'bg-amber-500', assignedCar: 'Car 2' as const },
-  { id: 'm5', name: 'Victor', avatarColor: 'bg-cyan-500', assignedCar: 'Car 1' as const },
+  { id: 'm1', name: 'Robi', avatarColor: 'bg-emerald-500', assignedCar: 'Car 1' as const },
+  { id: 'm2', name: 'Raul', avatarColor: 'bg-rose-500', assignedCar: 'Car 1' as const },
+  { id: 'm3', name: 'Codin', avatarColor: 'bg-indigo-500', assignedCar: 'Car 2' as const },
+  { id: 'm4', name: 'Bolovan', avatarColor: 'bg-amber-500', assignedCar: 'Car 2' as const },
+  { id: 'm5', name: 'Coleg Raul', avatarColor: 'bg-cyan-500', assignedCar: 'Car 1' as const },
 ];
