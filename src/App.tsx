@@ -302,12 +302,22 @@ export default function App() {
   };
 
   // Update member car
-  const handleUpdateMemberCar = (memberId: string, car: 'Car 1' | 'Car 2') => {
+  const handleUpdateMemberCar = async (memberId: string, car: 'Car 1' | 'Car 2') => {
     const updatedMembers = roomState.members.map(m => m.id === memberId ? { ...m, assignedCar: car } : m);
     setRoomState(prev => ({ ...prev, members: updatedMembers }));
 
     const updatedUser = updatedMembers.find(m => m.id === currentUser.id);
     if (updatedUser) handleSelectUser(updatedUser);
+
+    try {
+      await fetch(`/api/rooms/${roomId}/member-car`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ memberId, assignedCar: car })
+      });
+    } catch (e) {
+      console.error('Eroare schimbare mașină:', e);
+    }
   };
 
   // Switch Room

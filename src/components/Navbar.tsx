@@ -19,7 +19,10 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   setActiveTab,
-  currentRoom
+  currentRoom,
+  currentUser,
+  onOpenUserModal,
+  onOpenAddModal
 }) => {
   // Calculate total locked activities across days
   const lockedCount = (Object.values(currentRoom.itineraries || {}) as DayItinerary[]).reduce(
@@ -67,6 +70,47 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
+      {/* TOP HEADER BAR */}
+      <header className="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 px-3 py-2.5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center font-black text-sm shadow-sm">
+            🏝️
+          </div>
+          <div>
+            <h1 className="text-sm font-black text-white tracking-tight leading-none">Kefalonia</h1>
+            <span className="text-[10px] font-bold text-slate-400 flex items-center gap-1">
+              Villa Louke • <span className="text-sky-400 font-mono">{currentRoom.roomId}</span>
+            </span>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-1.5">
+          {/* Add Activity Button */}
+          <button
+            onClick={onOpenAddModal}
+            className="p-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white transition active:scale-95"
+            title="Adaugă Activitate"
+          >
+            <span className="text-xs font-bold flex items-center gap-1 px-1">
+              <span className="text-sky-400 text-sm font-extrabold">+</span> Adaugă
+            </span>
+          </button>
+
+          {/* Logged in user profile pill */}
+          <button
+            onClick={onOpenUserModal}
+            className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 hover:border-sky-500/40 text-white transition active:scale-95 shadow-sm"
+            title="Schimbă Utilizatorul"
+          >
+            <div className={`w-5 h-5 rounded-full ${currentUser.avatarColor} text-white font-bold text-[10px] flex items-center justify-center shadow-inner`}>
+              {currentUser.name.charAt(0)}
+            </div>
+            <span className="text-xs font-bold tracking-tight text-slate-200">{currentUser.name}</span>
+            <span className="text-[10px] text-slate-500">▾</span>
+          </button>
+        </div>
+      </header>
+
       {/* FLOATING LIQUID GLASS BOTTOM EQUALLY SPLIT TAB BAR */}
       <nav className="fixed bottom-2 left-2 right-2 z-40 max-w-md mx-auto">
         <div className="bg-slate-950/80 backdrop-blur-2xl border border-white/15 rounded-2xl sm:rounded-3xl p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.2)] grid grid-cols-4 gap-1 text-center w-full">

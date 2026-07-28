@@ -71,33 +71,33 @@ export const CarLogisticsView: React.FC<CarLogisticsViewProps> = ({
           </div>
 
           <div className="space-y-1.5">
-            {roomState.members.map(member => {
-              const isAssignedToCar1 = (member.assignedCar === 'Car 1' || !member.assignedCar);
-
-              return (
+            {car1Members.length > 0 ? (
+              car1Members.map(member => (
                 <div 
                   key={member.id}
-                  className={`p-2 rounded-xl border transition flex items-center justify-between ${
-                    isAssignedToCar1 
-                      ? 'bg-slate-950 border-sky-500/30 text-white' 
-                      : 'bg-slate-950/40 border-slate-800 text-slate-500 opacity-50'
-                  }`}
+                  className="p-2.5 rounded-2xl bg-slate-950 border border-sky-500/30 text-white flex items-center justify-between shadow-sm"
                 >
                   <div className="flex items-center gap-2">
-                    <div className={`w-3 h-3 rounded-full ${member.avatarColor}`} />
+                    <div className={`w-3.5 h-3.5 rounded-full ${member.avatarColor}`} />
                     <span className="font-bold text-xs">{member.name}</span>
-                    {member.id === 'm1' && <span className="text-[9px] bg-slate-800 px-1.5 py-0.2 rounded text-slate-400 font-medium">Șofer</span>}
+                    {member.id === 'm1' && (
+                      <span className="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded-md text-sky-400 font-medium border border-sky-500/20">
+                        Șofer
+                      </span>
+                    )}
                   </div>
 
                   <button
-                    onClick={() => onUpdateMemberCar(member.id, isAssignedToCar1 ? 'Car 2' : 'Car 1')}
-                    className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+                    onClick={() => onUpdateMemberCar(member.id, 'Car 2')}
+                    className="text-[10px] font-bold px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 transition border border-slate-700 flex items-center gap-1"
                   >
-                    {isAssignedToCar1 ? 'Mută în Mașina 2' : 'Mută în Mașina 1'}
+                    Mută în 🚙 Mașina 2
                   </button>
                 </div>
-              );
-            })}
+              ))
+            ) : (
+              <p className="text-xs text-slate-500 italic p-3 text-center">Niciun pasager în Mașina 1.</p>
+            )}
           </div>
         </div>
 
@@ -124,19 +124,23 @@ export const CarLogisticsView: React.FC<CarLogisticsViewProps> = ({
               car2Members.map(member => (
                 <div 
                   key={member.id}
-                  className="p-2 rounded-xl bg-slate-950 border border-indigo-500/30 text-white flex items-center justify-between"
+                  className="p-2.5 rounded-2xl bg-slate-950 border border-indigo-500/30 text-white flex items-center justify-between shadow-sm"
                 >
                   <div className="flex items-center gap-2">
-                    <div className={`w-3 h-3 rounded-full ${member.avatarColor}`} />
+                    <div className={`w-3.5 h-3.5 rounded-full ${member.avatarColor}`} />
                     <span className="font-bold text-xs">{member.name}</span>
-                    {member.id === 'm3' && <span className="text-[9px] bg-slate-800 px-1.5 py-0.2 rounded text-slate-400 font-medium">Șofer</span>}
+                    {member.id === 'm3' && (
+                      <span className="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded-md text-indigo-400 font-medium border border-indigo-500/20">
+                        Șofer
+                      </span>
+                    )}
                   </div>
 
                   <button
                     onClick={() => onUpdateMemberCar(member.id, 'Car 1')}
-                    className="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+                    className="text-[10px] font-bold px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 transition border border-slate-700 flex items-center gap-1"
                   >
-                    Mută în Mașina 1
+                    Mută în 🚗 Mașina 1
                   </button>
                 </div>
               ))

@@ -32,6 +32,16 @@ function getOrCreateRoom(roomIdInput: string): RoomState {
       itineraries: itinerariesMap,
       createdAt: Date.now()
     };
+  } else {
+    // Sync latest default activity fields (like imageUrls) while preserving custom user activities
+    const customActs = roomsStore[roomId].activities.filter(a => a.id.startsWith('custom-'));
+    roomsStore[roomId].activities = [
+      ...INITIAL_ACTIVITIES.map(initAct => {
+        const existing = roomsStore[roomId].activities.find(a => a.id === initAct.id);
+        return existing ? { ...existing, imageUrl: initAct.imageUrl } : initAct;
+      }),
+      ...customActs
+    ];
   }
   return roomsStore[roomId];
 }
@@ -62,9 +72,34 @@ app.post('/api/rooms/:roomId/join', (req, res) => {
 
   const existingIdx = room.members.findIndex(m => m.id === userProfile.id);
   if (existingIdx >= 0) {
-    room.members[existingIdx] = { ...room.members[existingIdx], ...userProfile };
+    const existingCar = room.members[existingIdx].assignedCar;
+    room.members[existingIdx] = { 
+      ...room.members[existingIdx], 
+      ...userProfile,
+      assignedCar: userProfile.assignedCar || existingCar || 'Car 1'
+    };
   } else {
-    room.members.push(userProfile);
+    room.members.push({
+      ...userProfile,
+      assignedCar: userProfile.assignedCar || 'Car 1'
+    });
+  }
+
+  res.json({ success: true, room });
+});
+
+// Update member car assignment
+app.post('/api/rooms/:roomId/member-car', (req, res) => {
+  const room = getOrCreateRoom(req.params.roomId);
+  const { memberId, assignedCar } = req.body;
+
+  if (!memberId || !assignedCar) {
+    return res.status(400).json({ error: 'Parametri invalizi' });
+  }
+
+  const member = room.members.find(m => m.id === memberId);
+  if (member) {
+    member.assignedCar = assignedCar;
   }
 
   res.json({ success: true, room });
