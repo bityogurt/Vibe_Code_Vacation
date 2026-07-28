@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { 
-  Sparkles, 
   MapPin, 
   Car, 
   Calendar, 
   Flame, 
   BarChart3, 
   Bot, 
-  Users, 
   PlusCircle, 
   Copy, 
   Check, 
@@ -47,154 +45,141 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
 
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 text-slate-100 px-3 sm:px-6 py-2.5">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-        
-        {/* Brand & Room Info */}
-        <div className="flex items-center justify-between w-full md:w-auto gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-rose-500/20 font-black text-xl">
+    <>
+      {/* TOP COMPACT MOBILE HEADER */}
+      <header className="shrink-0 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-slate-100 px-3 py-2 z-30">
+        <div className="flex items-center justify-between gap-2">
+          
+          {/* Logo & Trip Title */}
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-rose-500 to-indigo-500 flex items-center justify-center text-white font-black text-sm shadow-sm shrink-0">
               🇬🇷
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="font-bold text-slate-100 text-base sm:text-lg tracking-tight leading-none">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5">
+                <h1 className="font-extrabold text-white text-xs sm:text-sm tracking-tight truncate">
                   Kefalonia Match
                 </h1>
-                <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
-                  20-26 Iulie
+                <span className="text-[9px] font-bold px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 shrink-0">
+                  20-26 Sept
                 </span>
               </div>
-              <p className="text-xs text-slate-400 flex items-center gap-1.5 mt-0.5">
-                <MapPin className="w-3 h-3 text-rose-400 inline" />
+              <p className="text-[10px] text-slate-400 truncate flex items-center gap-1">
+                <MapPin className="w-2.5 h-2.5 text-rose-400 shrink-0 inline" />
                 Villa Louke • 5 Turiști • 2 Mașini
               </p>
             </div>
           </div>
 
-          {/* User Switcher Pill & Room Code (Mobile) */}
-          <div className="flex items-center gap-2 md:hidden">
+          {/* Actions & User Selector */}
+          <div className="flex items-center gap-1 shrink-0">
+            <button
+              onClick={onOpenAddModal}
+              title="Adaugă card nou"
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-cyan-500/30 transition flex items-center gap-1 text-[10px] font-bold"
+            >
+              <PlusCircle className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Card</span>
+            </button>
+
+            <button
+              onClick={handleCopyRoomLink}
+              title="Copiază link cameră"
+              className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+            >
+              {copied ? (
+                <Check className="w-3.5 h-3.5 text-emerald-400" />
+              ) : (
+                <Copy className="w-3.5 h-3.5 text-slate-400" />
+              )}
+            </button>
+
             <button
               onClick={onOpenUserModal}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium hover:bg-slate-700 transition"
+              className="flex items-center gap-1 px-2 py-1 rounded-lg bg-slate-800 border border-slate-700 text-xs font-medium hover:bg-slate-700 transition"
             >
               <div className={`w-2.5 h-2.5 rounded-full ${currentUser.avatarColor}`} />
-              <span className="max-w-[70px] truncate">{currentUser.name}</span>
+              <span className="max-w-[55px] truncate text-[11px] font-semibold">{currentUser.name}</span>
               <ChevronDown className="w-3 h-3 text-slate-400" />
             </button>
           </div>
-        </div>
 
-        {/* Tab Navigation Controls */}
-        <nav className="flex items-center justify-center bg-slate-950/80 p-1 rounded-xl border border-slate-800/80 w-full md:w-auto overflow-x-auto no-scrollbar">
+        </div>
+      </header>
+
+      {/* FIXED BOTTOM MOBILE NAVIGATION TAB BAR */}
+      <nav className="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 py-1.5 px-2 max-w-md mx-auto">
+        <div className="grid grid-cols-5 gap-1 text-center">
+          
           <button
             onClick={() => setActiveTab('swipe')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition whitespace-nowrap ${
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition ${
               activeTab === 'swipe'
-                ? 'bg-rose-500 text-white shadow-md shadow-rose-500/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-rose-500/20 text-rose-400 font-bold border border-rose-500/30'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Flame className="w-4 h-4 text-amber-300" />
-            Swipe Carduri
+            <Flame className={`w-5 h-5 ${activeTab === 'swipe' ? 'text-rose-400' : 'text-slate-400'}`} />
+            <span className="text-[10px] mt-0.5 tracking-tight leading-none">Swipe</span>
           </button>
 
           <button
             onClick={() => setActiveTab('consensus')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition whitespace-nowrap relative ${
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition ${
               activeTab === 'consensus'
-                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-indigo-500/20 text-indigo-400 font-bold border border-indigo-500/30'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <BarChart3 className="w-4 h-4 text-indigo-300" />
-            Consens Grup
+            <BarChart3 className={`w-5 h-5 ${activeTab === 'consensus' ? 'text-indigo-400' : 'text-slate-400'}`} />
+            <span className="text-[10px] mt-0.5 tracking-tight leading-none">Consens</span>
           </button>
 
           <button
             onClick={() => setActiveTab('itinerary')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition whitespace-nowrap ${
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition relative ${
               activeTab === 'itinerary'
-                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Calendar className="w-4 h-4 text-emerald-300" />
-            Itinerar Zile
-            {lockedCount > 0 && (
-              <span className="ml-1 px-1.5 py-0.2 bg-emerald-400 text-slate-950 font-extrabold text-[10px] rounded-full">
-                {lockedCount}
-              </span>
-            )}
+            <div className="relative">
+              <Calendar className={`w-5 h-5 ${activeTab === 'itinerary' ? 'text-emerald-400' : 'text-slate-400'}`} />
+              {lockedCount > 0 && (
+                <span className="absolute -top-1 -right-2 px-1 py-0.1 bg-emerald-400 text-slate-950 font-black text-[9px] rounded-full">
+                  {lockedCount}
+                </span>
+              )}
+            </div>
+            <span className="text-[10px] mt-0.5 tracking-tight leading-none">Itinerar</span>
           </button>
 
           <button
             onClick={() => setActiveTab('cars')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition whitespace-nowrap ${
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition ${
               activeTab === 'cars'
-                ? 'bg-amber-600 text-white shadow-md shadow-amber-600/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-amber-500/20 text-amber-400 font-bold border border-amber-500/30'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Car className="w-4 h-4 text-amber-300" />
-            2 Mașini & Buget
+            <Car className={`w-5 h-5 ${activeTab === 'cars' ? 'text-amber-400' : 'text-slate-400'}`} />
+            <span className="text-[10px] mt-0.5 tracking-tight leading-none">Mașini</span>
           </button>
 
           <button
             onClick={() => setActiveTab('ai')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition whitespace-nowrap ${
+            className={`flex flex-col items-center justify-center py-1 px-1 rounded-xl transition ${
               activeTab === 'ai'
-                ? 'bg-purple-600 text-white shadow-md shadow-purple-600/20'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                ? 'bg-purple-500/20 text-purple-400 font-bold border border-purple-500/30'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            <Bot className="w-4 h-4 text-purple-300" />
-            Kefalonia AI
-          </button>
-        </nav>
-
-        {/* Right Desktop Actions */}
-        <div className="hidden md:flex items-center gap-2.5">
-          {/* Add custom activity button */}
-          <button
-            onClick={onOpenAddModal}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-cyan-500/30 transition shadow-sm"
-          >
-            <PlusCircle className="w-3.5 h-3.5" />
-            Adaugă Card
+            <Bot className={`w-5 h-5 ${activeTab === 'ai' ? 'text-purple-400' : 'text-slate-400'}`} />
+            <span className="text-[10px] mt-0.5 tracking-tight leading-none">AI</span>
           </button>
 
-          {/* Copy Room Link Button */}
-          <button
-            onClick={handleCopyRoomLink}
-            title="Copiază link-ul camerei pentru prieteni"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
-          >
-            {copied ? (
-              <>
-                <Check className="w-3.5 h-3.5 text-emerald-400" />
-                <span className="text-emerald-400 font-semibold">Copiat!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-3.5 h-3.5 text-slate-400" />
-                <span>Cod: <strong className="text-white">{currentRoom.roomId}</strong></span>
-              </>
-            )}
-          </button>
-
-          {/* Desktop User profile selector */}
-          <button
-            onClick={onOpenUserModal}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 hover:bg-slate-700 text-xs font-medium transition shadow-sm"
-          >
-            <div className={`w-3 h-3 rounded-full ${currentUser.avatarColor} ring-2 ring-slate-900`} />
-            <span className="font-semibold text-slate-200">{currentUser.name}</span>
-            <Users className="w-3.5 h-3.5 text-slate-400 ml-1" />
-          </button>
         </div>
-
-      </div>
-    </header>
+      </nav>
+    </>
   );
 };

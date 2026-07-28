@@ -171,7 +171,7 @@ app.post('/api/ai/advisor', async (req, res) => {
     const ai = new GoogleGenAI({ apiKey });
 
     const systemInstruction = `Ești un asistent de călătorie expert în insula Kefalonia, Grecia.
-Grupul este format din 5 persoane, au 2 mașini și sunt cazați la Villa Louke (zona Livatho/Spartia) între 20 și 26 Iulie 2026.
+Grupul este format din 5 persoane, au 2 mașini și sunt cazați la Villa Louke (zona Livatho/Spartia) între 20 și 26 Septembrie 2026.
 Răspunde în limba română prietenos, concis și util cu sfaturi logistice exacte (timp de condus, parcare pentru 2 mașini, bugete reduse, recomandări de mâncare și plaje ascunse).
 Context curent itinerar: ${JSON.stringify(lockedItineraries || {})}
 Membri: 5 persoane cu 2 mașini.`;

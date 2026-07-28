@@ -327,9 +327,11 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-rose-500 selection:text-white flex flex-col justify-between">
-      <div>
-        {/* Navigation Bar */}
+    <div className="min-h-screen bg-slate-950 sm:bg-slate-900 text-slate-100 font-sans selection:bg-rose-500 selection:text-white flex justify-center items-start">
+      {/* Mobile App Container Frame */}
+      <div className="w-full max-w-md min-h-screen bg-slate-950 sm:border-x sm:border-slate-800/80 sm:shadow-2xl flex flex-col relative pb-20 overflow-x-hidden">
+        
+        {/* Top Header & Bottom Nav */}
         <Navbar
           activeTab={activeTab}
           setActiveTab={setActiveTab}
@@ -340,7 +342,7 @@ export default function App() {
         />
 
         {/* Main Tab Content */}
-        <main className="pb-16">
+        <main className="flex-1 w-full px-2 py-1">
 
           {activeTab === 'swipe' && (
             <SwipeDeck
@@ -386,12 +388,12 @@ export default function App() {
             <AiAssistant roomState={roomState} />
           )}
         </main>
-      </div>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-500">
-        <p>🇬🇷 Kefalonia Trip Matcher 2026 • Villa Louke • 5 Turiști & 2 Mașini • 20 - 26 Iulie</p>
-      </footer>
+        {/* Minimal Footer */}
+        <footer className="border-t border-slate-900 bg-slate-950 py-3 text-center text-[10px] text-slate-500 shrink-0 mb-12">
+          <p>🇬🇷 Kefalonia Match 2026 • Villa Louke • 20 - 26 Septembrie</p>
+        </footer>
+      </div>
 
       {/* Modals */}
       <UserSelectionModal

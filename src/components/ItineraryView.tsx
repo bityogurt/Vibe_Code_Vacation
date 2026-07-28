@@ -4,17 +4,11 @@ import {
   Clock, 
   MapPin, 
   Car, 
-  Euro, 
   Trash2, 
   Sparkles, 
   Share2, 
-  Copy, 
   Check, 
-  Plus, 
-  ChevronDown, 
-  ChevronUp, 
-  Info,
-  Navigation
+  Plus
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { RoomState, Activity, DayItinerary } from '../types';
@@ -36,7 +30,7 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
   const [activeDayNum, setActiveDayNum] = useState<number>(1);
   const [copiedText, setCopiedText] = useState<boolean>(false);
 
-  // Map of activity objects by ID for fast lookup
+  // Map of activity objects by ID
   const activityMap = useMemo(() => {
     const map: Record<string, Activity> = {};
     (roomState.activities || []).forEach(act => {
@@ -50,13 +44,9 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
     .map(id => activityMap[id])
     .filter(Boolean);
 
-  // Calculate daily costs
   const dayCostPerPerson = lockedActivitiesForDay.reduce((acc, act) => acc + act.costPerPerson, 0);
-  const dayCostGroupTotal = dayCostPerPerson * 5;
 
-  // Auto fill top 3 voted unassigned activities into current day
   const handleAutoFillTopVoted = () => {
-    // Find all unassigned activities sorted by consensus
     const lockedSet = new Set<string>();
     (Object.values(roomState.itineraries || {}) as DayItinerary[]).forEach(day => {
       (day.activityIds || []).forEach(id => lockedSet.add(id));
@@ -64,7 +54,6 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
 
     const unassigned = roomState.activities.filter(act => !lockedSet.has(act.id));
 
-    // Sort by likes
     const sorted = [...unassigned].sort((a, b) => {
       let likesA = 0;
       let likesB = 0;
@@ -79,17 +68,12 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
 
     const topToPick = sorted.slice(0, 3).map(a => a.id);
     if (topToPick.length === 0) {
-      alert('Nu mai sunt activități neasignate în pool!');
+      alert('Nu mai sunt activități neasignate!');
       return;
     }
 
     onLockActivitiesToDay(activeDayNum, topToPick);
-
-    confetti({
-      particleCount: 60,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
+    confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
   };
 
   const handleRemoveActivityFromDay = (actIdToRemove: string) => {
@@ -98,7 +82,7 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
   };
 
   const handleCopyWhatsAppItinerary = () => {
-    let text = `🇬🇷 *ITINERAR KEFALONIA 2026 - VILLA LOUKE*\n\n`;
+    let text = `🇬🇷 *ITINERAR KEFALONIA (20-26 SEPTEMBRIE 2026)*\n\n`;
 
     TRIP_DAYS.forEach(day => {
       const dayItin = roomState.itineraries[day.dayNumber];
@@ -110,12 +94,12 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
           text += `  ${idx + 1}. ${act.title} (${act.region} • ~${act.costPerPerson}€/pers)\n`;
         });
       } else {
-        text += `  *(Liber / În curs de votare)*\n`;
+        text += `  *(În curs de votare)*\n`;
       }
       text += `\n`;
     });
 
-    text += `🚘 *Echipă:* 5 Turiști • 2 Mașini • Cazare Villa Louke`;
+    text += `🚘 *Echipă:* Stefan, Robi, Raul, Codin, Bolovan (5 turiști • 2 mașini • Villa Louke)`;
 
     navigator.clipboard.writeText(text);
     setCopiedText(true);
@@ -123,167 +107,140 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
+    <div className="w-full space-y-4 pb-6">
       
-      {/* Header Banner */}
-      <div className="bg-slate-900 p-5 rounded-3xl border border-slate-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <Calendar className="w-5 h-5 text-emerald-400" />
-            <h2 className="text-xl font-bold text-white tracking-tight">
-              Itinerar Zilnic (20 - 26 Iulie 2026)
-            </h2>
+      {/* HEADER BANNER */}
+      <div className="bg-slate-900 border border-slate-800 p-4 rounded-3xl shadow-lg space-y-3">
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold">
+              <Calendar className="w-4 h-4" />
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-white tracking-tight">Itinerar 20-26 Septembrie</h2>
+              <p className="text-[11px] text-slate-400">Villa Louke • 5 Turiști • 2 Mașini</p>
+            </div>
           </div>
-          <p className="text-xs text-slate-400">
-            Cea mai votată selecție de 3-4 activități pe zi pentru o vacanță echilibrată fără aglomerație sau stres la drum.
-          </p>
+
+          <button
+            onClick={handleCopyWhatsAppItinerary}
+            className="px-3 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow transition flex items-center gap-1 shrink-0"
+          >
+            {copiedText ? (
+              <>
+                <Check className="w-3.5 h-3.5" />
+                <span>Copiat!</span>
+              </>
+            ) : (
+              <>
+                <Share2 className="w-3.5 h-3.5" />
+                <span>WhatsApp</span>
+              </>
+            )}
+          </button>
         </div>
 
-        <button
-          onClick={handleCopyWhatsAppItinerary}
-          className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center gap-2 shrink-0"
-        >
-          {copiedText ? (
-            <>
-              <Check className="w-4 h-4 text-emerald-200" />
-              <span>Copiat pentru WhatsApp!</span>
-            </>
-          ) : (
-            <>
-              <Share2 className="w-4 h-4" />
-              <span>Copiază pe WhatsApp (5 Oameni)</span>
-            </>
-          )}
-        </button>
-      </div>
+        {/* Horizontal Days Selector */}
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1">
+          {TRIP_DAYS.map(day => {
+            const count = roomState.itineraries[day.dayNumber]?.activityIds?.length || 0;
+            const isActive = activeDayNum === day.dayNumber;
 
-      {/* Days Tabs (7 Days) */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2">
-        {TRIP_DAYS.map(day => {
-          const count = roomState.itineraries[day.dayNumber]?.activityIds?.length || 0;
-          const isActive = activeDayNum === day.dayNumber;
-
-          return (
-            <button
-              key={day.dayNumber}
-              onClick={() => setActiveDayNum(day.dayNumber)}
-              className={`p-3 rounded-2xl border text-left transition flex flex-col justify-between gap-1.5 ${
-                isActive
-                  ? 'bg-emerald-600 border-emerald-400 text-white shadow-lg shadow-emerald-600/20'
-                  : 'bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
-              }`}
-            >
-              <div className="text-[10px] uppercase font-mono tracking-wider opacity-80">
-                Ziua {day.dayNumber}
-              </div>
-              <div className="font-bold text-xs leading-tight">
-                {day.dayName.split(',')[0]}
-              </div>
-              <div className="text-[10px] font-semibold flex items-center justify-between mt-1">
-                <span>{day.dayName.split(',')[1]}</span>
-                <span className={`px-1.5 py-0.2 rounded-full text-[9px] font-bold ${isActive ? 'bg-slate-950 text-emerald-300' : 'bg-slate-800 text-slate-300'}`}>
-                  {count} act
+            return (
+              <button
+                key={day.dayNumber}
+                onClick={() => setActiveDayNum(day.dayNumber)}
+                className={`px-3 py-2 rounded-xl border text-left transition flex items-center gap-1.5 shrink-0 ${
+                  isActive
+                    ? 'bg-sky-500 text-slate-950 border-sky-400 shadow-md font-bold'
+                    : 'bg-slate-950 text-slate-400 border-slate-800 font-medium'
+                }`}
+              >
+                <span className="text-xs">Ziua {day.dayNumber}</span>
+                <span className={`text-[10px] px-1.5 py-0.2 rounded-md ${isActive ? 'bg-slate-950/20 text-slate-950 font-black' : 'bg-slate-900 text-sky-400'}`}>
+                  {count}
                 </span>
-              </div>
-            </button>
-          );
-        })}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      {/* ACTIVE DAY ITINERARY CONTENT */}
-      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 sm:p-6 space-y-6 shadow-xl">
+      {/* ACTIVE DAY DETAILS */}
+      <div className="bg-slate-900 border border-slate-800 rounded-3xl p-4 space-y-4 shadow-lg">
         
-        {/* Day Summary Title */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-3">
+        {/* Title & Theme */}
+        <div className="flex items-start justify-between border-b border-slate-800 pb-3 gap-2">
           <div>
-            <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">
+            <span className="text-xs font-bold text-sky-400 uppercase tracking-wide">
               Ziua {currentDayData.dayNumber} • {currentDayData.dayName}
             </span>
-            <h3 className="text-lg sm:text-xl font-bold text-white mt-0.5">
+            <h3 className="text-base font-bold text-white mt-0.5">
               {currentDayData.theme}
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-400 mt-0.5">
               💡 {currentDayData.notes}
             </p>
           </div>
 
-          <div className="flex items-center gap-3 bg-slate-950 p-2.5 rounded-2xl border border-slate-800 shrink-0">
-            <div>
-              <div className="text-[10px] text-slate-400 font-medium">Buget Proiectat</div>
-              <div className="text-sm font-black text-amber-400">
-                ~{dayCostPerPerson}€ <span className="text-[10px] text-slate-400 font-normal">/pers (~{dayCostGroupTotal}€ grup)</span>
-              </div>
-            </div>
+          <div className="text-right shrink-0 bg-slate-950 px-2.5 py-1.5 rounded-xl border border-slate-800">
+            <span className="text-[10px] text-slate-400 block font-medium">Buget zilnic</span>
+            <span className="text-xs font-black text-amber-400">~{dayCostPerPerson}€ / pers</span>
           </div>
         </div>
 
-        {/* LOCKED ACTIVITIES TIMELINE FOR THIS DAY */}
+        {/* TIMELINE ACTIVITIES */}
         {lockedActivitiesForDay.length > 0 ? (
-          <div className="space-y-4">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-emerald-400" />
-              Program Sugerat pentru Ziua {activeDayNum}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
+              <Clock className="w-3.5 h-3.5 text-sky-400" />
+              Program Sugerat Ziua {activeDayNum}
             </h4>
 
-            <div className="relative border-l-2 border-emerald-500/30 ml-3 pl-5 space-y-6">
+            <div className="space-y-2.5">
               {lockedActivitiesForDay.map((activity, index) => {
-                const timeSlotLabel = index === 0 ? 'Dimineața (09:30 - 13:00)' : index === 1 ? 'Prânz & Chill (13:30 - 16:00)' : index === 2 ? 'După-Amiază (16:30 - 19:00)' : 'Apus & Cină (19:30 - 22:00)';
+                const timeSlotLabel = index === 0 ? 'Dimineața (09:30 - 13:00)' : index === 1 ? 'Prânz (13:30 - 16:00)' : index === 2 ? 'După-Amiază (16:30 - 19:00)' : 'Apus & Cină (19:30 - 22:00)';
 
                 return (
-                  <div key={activity.id} className="relative group">
-                    {/* Timeline Node Icon */}
-                    <div className="absolute -left-[27px] top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-slate-900 ring-2 ring-emerald-500/20" />
+                  <div key={activity.id} className="bg-slate-950 border border-slate-800 rounded-2xl p-3 flex items-start justify-between gap-3 shadow-sm">
+                    <img 
+                      src={activity.imageUrl} 
+                      alt={activity.title} 
+                      className="w-14 h-14 rounded-xl object-cover shrink-0 border border-slate-800"
+                    />
 
-                    <div className="bg-slate-950/80 border border-slate-800 rounded-2xl p-4 transition hover:border-slate-700 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                      
-                      {/* Left Info */}
-                      <div className="flex items-start gap-3.5">
-                        <img 
-                          src={activity.imageUrl} 
-                          alt={activity.title} 
-                          className="w-16 h-16 rounded-xl object-cover shrink-0 border border-slate-800"
-                        />
-                        <div>
-                          <span className="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md border border-emerald-500/20">
-                            {timeSlotLabel}
-                          </span>
+                    <div className="flex-1 min-w-0">
+                      <span className="text-[10px] font-bold text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded-md border border-sky-500/20">
+                        {timeSlotLabel}
+                      </span>
 
-                          <h5 className="font-bold text-white text-base mt-1">
-                            {activity.title}
-                          </h5>
+                      <h5 className="font-bold text-white text-xs mt-1 truncate">
+                        {activity.title}
+                      </h5>
 
-                          <p className="text-xs text-slate-400 flex flex-wrap items-center gap-x-2 gap-y-1 mt-0.5">
-                            <span className="text-rose-300">{activity.region}</span>
-                            <span>•</span>
-                            <span className="text-amber-300">{activity.distanceFromVillaLouke}</span>
-                            <span>•</span>
-                            <span className="text-emerald-300">
-                              {activity.costPerPerson === 0 ? 'Gratuit' : `~${activity.costPerPerson}€/pers`}
-                            </span>
-                          </p>
+                      <p className="text-[11px] text-slate-400 flex items-center gap-2 mt-0.5">
+                        <span className="text-slate-300">{activity.region}</span>
+                        <span>•</span>
+                        <span className="text-amber-300">{activity.distanceFromVillaLouke}</span>
+                      </p>
 
-                          <p className="text-xs text-slate-300 mt-1 line-clamp-1">
-                            🚗 2 Mașini: {activity.carLogisticsNote}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Remove button */}
-                      <button
-                        onClick={() => handleRemoveActivityFromDay(activity.id)}
-                        className="self-end sm:self-center p-2 rounded-xl bg-slate-900 hover:bg-rose-950/80 text-slate-400 hover:text-rose-400 border border-slate-800 transition"
-                        title="Scoate din această zi"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-
+                      <p className="text-[10px] text-slate-400 mt-1 line-clamp-1">
+                        🚗 Parcare 2 mașini: {activity.carLogisticsNote}
+                      </p>
                     </div>
+
+                    <button
+                      onClick={() => handleRemoveActivityFromDay(activity.id)}
+                      className="p-1.5 rounded-xl bg-slate-900 text-slate-400 hover:text-rose-400 border border-slate-800 transition shrink-0"
+                      title="Şterge din această zi"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
                   </div>
                 );
               })}
             </div>
 
-            {/* Clear Day Button */}
             <div className="pt-2 flex justify-end">
               <button
                 onClick={() => onUnlockDay(activeDayNum)}
@@ -294,32 +251,23 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
             </div>
           </div>
         ) : (
-          /* EMPTY DAY STATE */
-          <div className="p-8 border border-dashed border-slate-800 rounded-2xl text-center space-y-4 bg-slate-950/40">
-            <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 mx-auto">
-              <Calendar className="w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="font-bold text-white text-base">Ziua {activeDayNum} nu are activități programate încă</h4>
-              <p className="text-xs text-slate-400 max-w-sm mx-auto mt-1">
-                Alege cele mai votate activități din lista de consens sau lasă asistentul să aleagă automat top 3 opțiuni neocupate!
-              </p>
-            </div>
+          <div className="p-6 border border-dashed border-slate-800 rounded-2xl text-center space-y-3 bg-slate-950/40">
+            <p className="text-xs font-semibold text-slate-300">Ziua {activeDayNum} nu are activități adăugate încă.</p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-1">
               <button
                 onClick={handleAutoFillTopVoted}
-                className="w-full sm:w-auto px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-indigo-600 hover:from-emerald-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-4 py-2.5 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs rounded-xl shadow transition flex items-center justify-center gap-1.5"
               >
-                <Sparkles className="w-4 h-4 text-amber-300" />
-                Umple Automat cu Top 3 Cele Mai Votate
+                <Sparkles className="w-4 h-4" />
+                Adaugă Automat Top 3 Cele Mai Votate
               </button>
 
               <button
                 onClick={onSwitchToConsensus}
                 className="w-full sm:w-auto px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-xl border border-slate-700 transition"
               >
-                Alege din Listă Consens
+                Alege din Consens
               </button>
             </div>
           </div>
