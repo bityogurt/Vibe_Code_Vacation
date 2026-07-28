@@ -6,6 +6,7 @@ import { ItineraryView } from './components/ItineraryView';
 import { CarLogisticsView } from './components/CarLogisticsView';
 import { AddActivityModal } from './components/AddActivityModal';
 import { UserSelectionModal } from './components/UserSelectionModal';
+import { EditImageModal } from './components/EditImageModal';
 import { WelcomeScreen } from './components/WelcomeScreen';
 import { RoomState, UserProfile, VoteType, Activity } from './types';
 import { INITIAL_ACTIVITIES } from './data/kefaloniaActivities';
@@ -71,6 +72,27 @@ export default function App() {
   // Modals state
   const [isUserModalOpen, setIsUserModalOpen] = useState<boolean>(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState<boolean>(false);
+  const [editingImageActivity, setEditingImageActivity] = useState<Activity | null>(null);
+
+  // Save updated activity photo
+  const handleSaveActivityImage = async (activityId: string, newImageUrl: string) => {
+    setRoomState(prev => ({
+      ...prev,
+      activities: prev.activities.map(act => 
+        act.id === activityId ? { ...act, imageUrl: newImageUrl } : act
+      )
+    }));
+
+    try {
+      await fetch(`/api/rooms/${roomId}/update-activity-image`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ activityId, imageUrl: newImageUrl })
+      });
+    } catch (err) {
+      console.error('Eroare salvare imagine activitate:', err);
+    }
+  };
 
   // Fetch room state from backend API
   const fetchRoomState = useCallback(async () => {
@@ -364,6 +386,7 @@ export default function App() {
               onOpenAddModal={() => setIsAddModalOpen(true)}
               onSwitchTabToConsensus={() => setActiveTab('consensus')}
               onLockTop3ToDay={handleLockTop3ToDay}
+              onOpenEditImage={(act) => setEditingImageActivity(act)}
             />
           )}
 
@@ -374,6 +397,7 @@ export default function App() {
               onLockActivitiesToDay={handleLockActivitiesToDay}
               onLockTop3ToDay={handleLockTop3ToDay}
               onSwitchToItinerary={() => setActiveTab('itinerary')}
+              onOpenEditImage={(act) => setEditingImageActivity(act)}
             />
           )}
 
@@ -383,6 +407,7 @@ export default function App() {
               onUnlockDay={handleUnlockDay}
               onLockActivitiesToDay={handleLockActivitiesToDay}
               onSwitchToConsensus={() => setActiveTab('consensus')}
+              onOpenEditImage={(act) => setEditingImageActivity(act)}
             />
           )}
 
@@ -412,6 +437,12 @@ export default function App() {
         onClose={() => setIsAddModalOpen(false)}
         onAddActivity={handleAddActivity}
         currentUserName={currentUser.name}
+      />
+
+      <EditImageModal
+        activity={editingImageActivity}
+        onClose={() => setEditingImageActivity(null)}
+        onSaveImage={handleSaveActivityImage}
       />
     </div>
   );

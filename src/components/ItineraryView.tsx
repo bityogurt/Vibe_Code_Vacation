@@ -8,7 +8,8 @@ import {
   Sparkles, 
   Share2, 
   Check, 
-  Plus
+  Plus,
+  Camera
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { RoomState, Activity, DayItinerary } from '../types';
@@ -19,13 +20,15 @@ interface ItineraryViewProps {
   onUnlockDay: (dayNumber: number) => void;
   onLockActivitiesToDay: (dayNumber: number, activityIds: string[]) => void;
   onSwitchToConsensus: () => void;
+  onOpenEditImage?: (activity: Activity) => void;
 }
 
 export const ItineraryView: React.FC<ItineraryViewProps> = ({
   roomState,
   onUnlockDay,
   onLockActivitiesToDay,
-  onSwitchToConsensus
+  onSwitchToConsensus,
+  onOpenEditImage
 }) => {
   const [activeDayNum, setActiveDayNum] = useState<number>(1);
   const [copiedText, setCopiedText] = useState<boolean>(false);
@@ -203,19 +206,37 @@ export const ItineraryView: React.FC<ItineraryViewProps> = ({
 
                 return (
                   <div key={activity.id} className="bg-slate-950 border border-slate-800 rounded-2xl p-3 flex items-start justify-between gap-3 shadow-sm">
-                    <img 
-                      src={activity.imageUrl} 
-                      alt={activity.title} 
-                      className="w-14 h-14 rounded-xl object-cover shrink-0 border border-slate-800"
-                    />
+                    <div 
+                      className="relative shrink-0 group cursor-pointer"
+                      onClick={() => onOpenEditImage && onOpenEditImage(activity)}
+                      title="Schimbă Imaginea"
+                    >
+                      <img 
+                        src={activity.imageUrl} 
+                        alt={activity.title} 
+                        className="w-14 h-14 rounded-xl object-cover border border-slate-800 group-hover:opacity-80 transition"
+                      />
+                      <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition">
+                        <Camera className="w-4 h-4 text-sky-400" />
+                      </div>
+                    </div>
 
                     <div className="flex-1 min-w-0">
                       <span className="text-[10px] font-bold text-sky-400 bg-sky-500/10 px-2 py-0.5 rounded-md border border-sky-500/20">
                         {timeSlotLabel}
                       </span>
 
-                      <h5 className="font-bold text-white text-xs mt-1 truncate">
-                        {activity.title}
+                      <h5 className="font-bold text-white text-xs mt-1 truncate flex items-center justify-between">
+                        <span>{activity.title}</span>
+                        {onOpenEditImage && (
+                          <button
+                            onClick={() => onOpenEditImage(activity)}
+                            className="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-sky-400 transition"
+                            title="Schimbă Imaginea"
+                          >
+                            <Camera className="w-3.5 h-3.5" />
+                          </button>
+                        )}
                       </h5>
 
                       <p className="text-[11px] text-slate-400 flex items-center gap-2 mt-0.5">

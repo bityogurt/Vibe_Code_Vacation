@@ -8,10 +8,11 @@ import {
   Sparkles, 
   Plus, 
   ChevronRight,
-  Info
+  Info,
+  Camera
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { RoomState, VoteType, DayItinerary } from '../types';
+import { RoomState, VoteType, DayItinerary, Activity } from '../types';
 import { TRIP_DAYS } from '../data/tripDates';
 
 interface ConsensusViewProps {
@@ -20,6 +21,7 @@ interface ConsensusViewProps {
   onLockActivitiesToDay: (dayNumber: number, activityIds: string[]) => void;
   onLockTop3ToDay: (dayNumber: number) => void;
   onSwitchToItinerary: () => void;
+  onOpenEditImage?: (activity: Activity) => void;
 }
 
 export const ConsensusView: React.FC<ConsensusViewProps> = ({
@@ -27,7 +29,8 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
   activeVotingDay,
   onLockActivitiesToDay,
   onLockTop3ToDay,
-  onSwitchToItinerary
+  onSwitchToItinerary,
+  onOpenEditImage
 }) => {
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [filterScheduledStatus, setFilterScheduledStatus] = useState<'all' | 'unscheduled' | 'scheduled'>('unscheduled');
@@ -202,15 +205,22 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
             >
               {/* Card Header & Rank */}
               <div className="flex items-start gap-3">
-                <div className="relative shrink-0">
+                <div 
+                  className="relative shrink-0 group cursor-pointer"
+                  onClick={() => onOpenEditImage && onOpenEditImage(item.activity)}
+                  title="Apasă pentru a schimba imaginea"
+                >
                   <img 
                     src={item.activity.imageUrl} 
                     alt={item.activity.title} 
-                    className="w-16 h-16 rounded-xl object-cover border border-slate-800"
+                    className="w-16 h-16 rounded-xl object-cover border border-slate-800 group-hover:opacity-80 transition"
                   />
                   <span className="absolute top-1 left-1 px-1.5 py-0.2 rounded bg-slate-950/80 backdrop-blur-md text-sky-400 text-[10px] font-black border border-sky-400/20">
                     #{index + 1}
                   </span>
+                  <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition">
+                    <Camera className="w-5 h-5 text-sky-400" />
+                  </div>
                 </div>
 
                 <div className="flex-1 min-w-0">
@@ -218,9 +228,20 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
                     <h3 className="font-bold text-white text-sm truncate">
                       {item.activity.title}
                     </h3>
-                    <span className="text-xs font-black text-sky-400 shrink-0">
-                      {item.approvalPercentage}%
-                    </span>
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      {onOpenEditImage && (
+                        <button
+                          onClick={() => onOpenEditImage(item.activity)}
+                          className="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                          title="Schimbă Imaginea"
+                        >
+                          <Camera className="w-3.5 h-3.5 text-sky-400" />
+                        </button>
+                      )}
+                      <span className="text-xs font-black text-sky-400">
+                        {item.approvalPercentage}%
+                      </span>
+                    </div>
                   </div>
 
                   <p className="text-[11px] text-slate-400 mt-0.5">

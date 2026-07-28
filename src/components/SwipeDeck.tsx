@@ -12,7 +12,8 @@ import {
   CheckCircle2, 
   Compass,
   Sparkles,
-  Plus
+  Plus,
+  Camera
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Activity, UserProfile, Vote, VoteType, RoomState, DayItinerary } from '../types';
@@ -28,6 +29,7 @@ interface SwipeDeckProps {
   onOpenAddModal: () => void;
   onSwitchTabToConsensus: () => void;
   onLockTop3ToDay: (dayNumber: number) => void;
+  onOpenEditImage?: (activity: Activity) => void;
 }
 
 export const SwipeDeck: React.FC<SwipeDeckProps> = ({
@@ -38,7 +40,8 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   onVote,
   onUndoLastVote,
   onOpenAddModal,
-  onSwitchTabToConsensus
+  onSwitchTabToConsensus,
+  onOpenEditImage
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedRegion, setSelectedRegion] = useState<string>('all');
@@ -179,7 +182,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
                   </div>
 
                   {/* Top Glass Badges */}
-                  <div className="relative z-10 p-4 flex items-center justify-between">
+                  <div className="relative z-10 p-4 flex items-center justify-between gap-2">
                     <span className="px-3.5 py-1.5 rounded-full text-xs font-black tracking-wide text-white bg-slate-950/60 backdrop-blur-xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_8px_16px_rgba(0,0,0,0.4)]">
                       {currentCard.category === 'beach' && '🏖️ Plajă'}
                       {currentCard.category === 'hidden_gem' && '💎 Perlă Ascunsă'}
@@ -190,9 +193,25 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
                       {currentCard.category === 'boat_tour' && '🚤 Croazieră'}
                     </span>
 
-                    <span className="px-3.5 py-1.5 rounded-full text-xs font-black text-cyan-200 bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_0_15px_rgba(6,182,212,0.3)]">
-                      {currentCard.costPerPerson === 0 ? 'Gratuit' : `~${currentCard.costPerPerson}€ / pers`}
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      {onOpenEditImage && (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onOpenEditImage(currentCard);
+                          }}
+                          className="px-2.5 py-1.5 rounded-full text-xs font-bold text-white bg-slate-950/70 hover:bg-slate-900 border border-white/25 backdrop-blur-xl transition active:scale-95 shadow-md flex items-center gap-1"
+                          title="Schimbă Poza Cardului"
+                        >
+                          <Camera className="w-3.5 h-3.5 text-sky-400" />
+                          <span className="text-[10px] hidden sm:inline">Schimbă Poza</span>
+                        </button>
+                      )}
+
+                      <span className="px-3 py-1.5 rounded-full text-xs font-black text-cyan-200 bg-cyan-500/20 border border-cyan-400/40 backdrop-blur-xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_0_15px_rgba(6,182,212,0.3)]">
+                        {currentCard.costPerPerson === 0 ? 'Gratuit' : `~${currentCard.costPerPerson}€`}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Bottom Liquid Glass Info Panel */}
