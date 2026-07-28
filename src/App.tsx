@@ -306,6 +306,40 @@ export default function App() {
     }
   };
 
+  // Update day timeSlots and notes
+  const handleUpdateDaySchedule = async (dayNumber: number, timeSlots?: Record<string, string>, notes?: string) => {
+    setRoomState(prev => {
+      const existing = prev.itineraries[dayNumber] || {
+        date: '',
+        dayNumber,
+        dayName: `Ziua ${dayNumber}`,
+        theme: '',
+        activityIds: []
+      };
+      return {
+        ...prev,
+        itineraries: {
+          ...prev.itineraries,
+          [dayNumber]: {
+            ...existing,
+            timeSlots: timeSlots !== undefined ? timeSlots : existing.timeSlots,
+            notes: notes !== undefined ? notes : existing.notes
+          }
+        }
+      };
+    });
+
+    try {
+      await fetch(`/api/rooms/${roomId}/update-day-schedule`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dayNumber, timeSlots, notes })
+      });
+    } catch (e) {
+      console.error('Eroare salvare program orar zi:', e);
+    }
+  };
+
   // Add custom activity
   const handleAddActivity = async (activityData: any) => {
     try {
@@ -393,6 +427,7 @@ export default function App() {
           {activeTab === 'consensus' && (
             <ConsensusView
               roomState={roomState}
+              currentUser={currentUser}
               activeVotingDay={activeVotingDay}
               onLockActivitiesToDay={handleLockActivitiesToDay}
               onLockTop3ToDay={handleLockTop3ToDay}
@@ -404,8 +439,10 @@ export default function App() {
           {activeTab === 'itinerary' && (
             <ItineraryView
               roomState={roomState}
+              currentUser={currentUser}
               onUnlockDay={handleUnlockDay}
               onLockActivitiesToDay={handleLockActivitiesToDay}
+              onUpdateDaySchedule={handleUpdateDaySchedule}
               onSwitchToConsensus={() => setActiveTab('consensus')}
               onOpenEditImage={(act) => setEditingImageActivity(act)}
             />

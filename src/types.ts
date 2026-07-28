@@ -41,6 +41,8 @@ export interface UserProfile {
   name: string;
   avatarColor: string; // Tailwind bg color class or hex
   assignedCar?: 'Car 1' | 'Car 2';
+  role?: 'admin' | 'user';
+  isAdmin?: boolean;
 }
 
 export interface Vote {

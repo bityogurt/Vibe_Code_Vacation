@@ -161,6 +161,25 @@ app.post('/api/rooms/:roomId/lock-day', (req, res) => {
   res.json({ success: true, room });
 });
 
+// Update day schedule time slots & notes
+app.post('/api/rooms/:roomId/update-day-schedule', (req, res) => {
+  const room = getOrCreateRoom(req.params.roomId);
+  const { dayNumber, timeSlots, notes } = req.body;
+
+  if (!dayNumber || !room.itineraries[dayNumber]) {
+    return res.status(404).json({ error: 'Ziua nu există' });
+  }
+
+  if (timeSlots !== undefined) {
+    room.itineraries[dayNumber].timeSlots = timeSlots;
+  }
+  if (notes !== undefined) {
+    room.itineraries[dayNumber].notes = notes;
+  }
+
+  res.json({ success: true, room });
+});
+
 // Unlock day itinerary
 app.post('/api/rooms/:roomId/unlock-day', (req, res) => {
   const room = getOrCreateRoom(req.params.roomId);

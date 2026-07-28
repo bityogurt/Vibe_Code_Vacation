@@ -12,11 +12,12 @@ import {
   Camera
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { RoomState, VoteType, DayItinerary, Activity } from '../types';
+import { RoomState, VoteType, DayItinerary, Activity, UserProfile } from '../types';
 import { TRIP_DAYS } from '../data/tripDates';
 
 interface ConsensusViewProps {
   roomState: RoomState;
+  currentUser: UserProfile;
   activeVotingDay: number;
   onLockActivitiesToDay: (dayNumber: number, activityIds: string[]) => void;
   onLockTop3ToDay: (dayNumber: number) => void;
@@ -26,12 +27,14 @@ interface ConsensusViewProps {
 
 export const ConsensusView: React.FC<ConsensusViewProps> = ({
   roomState,
+  currentUser,
   activeVotingDay,
   onLockActivitiesToDay,
   onLockTop3ToDay,
   onSwitchToItinerary,
   onOpenEditImage
 }) => {
+  const isAdmin = currentUser?.isAdmin || currentUser?.name?.toLowerCase() === 'codin';
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [filterScheduledStatus, setFilterScheduledStatus] = useState<'all' | 'unscheduled' | 'scheduled'>('unscheduled');
   const [selectedDayToLock, setSelectedDayToLock] = useState<number>(activeVotingDay);
@@ -102,6 +105,10 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
   }, [roomState, activityScheduledDayMap, filterCategory, filterScheduledStatus]);
 
   const handleDirectLockToDay = (actId: string, dayNum: number) => {
+    if (!isAdmin) {
+      alert('🔒 Doar Admin Codin are permisiunea de a programa sau bloca activități în itinerar!');
+      return;
+    }
     const currentDayActivities = roomState.itineraries[dayNum]?.activityIds || [];
     if (currentDayActivities.includes(actId)) return;
 
@@ -129,6 +136,10 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
 
           <button
             onClick={() => {
+              if (!isAdmin) {
+                alert('🔒 Doar Admin Codin are permisiunea de a trimite automat Top 3 în itinerar!');
+                return;
+              }
               confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
               onLockTop3ToDay(activeVotingDay);
             }}

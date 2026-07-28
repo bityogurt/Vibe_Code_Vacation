@@ -99,13 +99,27 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Logged in user profile pill */}
           <button
             onClick={onOpenUserModal}
-            className="flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-xl bg-slate-900 border border-slate-800 hover:border-sky-500/40 text-white transition active:scale-95 shadow-sm"
+            className={`flex items-center gap-1.5 pl-1.5 pr-2.5 py-1 rounded-xl border transition active:scale-95 shadow-sm ${
+              (currentUser.isAdmin || currentUser.name.toLowerCase() === 'codin')
+                ? 'bg-gradient-to-r from-sky-950 to-cyan-950 border-cyan-400/50 text-cyan-300'
+                : 'bg-slate-900 border-slate-800 hover:border-sky-500/40 text-white'
+            }`}
             title="Schimbă Utilizatorul"
           >
-            <div className={`w-5 h-5 rounded-full ${currentUser.avatarColor} text-white font-bold text-[10px] flex items-center justify-center shadow-inner`}>
+            <div className={`w-5 h-5 rounded-full ${currentUser.avatarColor} text-white font-bold text-[10px] flex items-center justify-center shadow-inner relative`}>
               {currentUser.name.charAt(0)}
+              {(currentUser.isAdmin || currentUser.name.toLowerCase() === 'codin') && (
+                <span className="absolute -top-1.5 -right-1 text-[10px]">👑</span>
+              )}
             </div>
-            <span className="text-xs font-bold tracking-tight text-slate-200">{currentUser.name}</span>
+            <span className="text-xs font-bold tracking-tight text-slate-200 flex items-center gap-1">
+              <span>{currentUser.name}</span>
+              {(currentUser.isAdmin || currentUser.name.toLowerCase() === 'codin') && (
+                <span className="text-[9px] font-black bg-cyan-500/20 text-cyan-300 px-1 py-0.2 rounded border border-cyan-400/30">
+                  ADMIN
+                </span>
+              )}
+            </span>
             <span className="text-[10px] text-slate-500">▾</span>
           </button>
         </div>

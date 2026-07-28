@@ -60,11 +60,11 @@ export const TRIP_DAYS: DayItinerary[] = [
 ];
 
 export const DEFAULT_MEMBERS = [
-  { id: 'm1', name: 'Robi', avatarColor: 'bg-emerald-500', assignedCar: 'Car 1' as const },
-  { id: 'm2', name: 'Raul', avatarColor: 'bg-indigo-500', assignedCar: 'Car 1' as const },
-  { id: 'm3', name: 'Codin', avatarColor: 'bg-cyan-500', assignedCar: 'Car 2' as const },
-  { id: 'm4', name: 'Bolovan', avatarColor: 'bg-amber-500', assignedCar: 'Car 2' as const },
-  { id: 'm5', name: 'Stefan', avatarColor: 'bg-sky-500', assignedCar: 'Car 1' as const },
+  { id: 'm3', name: 'Codin', avatarColor: 'bg-cyan-500', assignedCar: 'Car 2' as const, role: 'admin' as const, isAdmin: true },
+  { id: 'm1', name: 'Robi', avatarColor: 'bg-emerald-500', assignedCar: 'Car 1' as const, role: 'user' as const, isAdmin: false },
+  { id: 'm2', name: 'Raul', avatarColor: 'bg-indigo-500', assignedCar: 'Car 1' as const, role: 'user' as const, isAdmin: false },
+  { id: 'm4', name: 'Bolovan', avatarColor: 'bg-amber-500', assignedCar: 'Car 2' as const, role: 'user' as const, isAdmin: false },
+  { id: 'm5', name: 'Stefan', avatarColor: 'bg-sky-500', assignedCar: 'Car 1' as const, role: 'user' as const, isAdmin: false },
 ];
 
 export function getMaxUnlockedVotingDay(): { maxDayNumber: number; explanationText: string } {
