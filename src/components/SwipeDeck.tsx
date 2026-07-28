@@ -128,104 +128,6 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
   return (
     <div className="w-full flex flex-col justify-between min-h-[calc(100vh-120px)] pb-4 space-y-3">
       
-      {/* TOP STREAMLINED DAY SELECTION PILLS */}
-      <div className="space-y-2">
-        {/* Horizontal scrollable Day Pills */}
-        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 px-0.5">
-          {TRIP_DAYS.filter(day => day.dayNumber <= unlockedInfo.maxDayNumber).map(day => {
-            const isSelected = activeVotingDay === day.dayNumber;
-            return (
-              <button
-                key={day.dayNumber}
-                onClick={() => onChangeVotingDay(day.dayNumber)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition border flex items-center gap-1 shrink-0 ${
-                  isSelected
-                    ? 'bg-sky-500 text-slate-950 border-sky-400 shadow-md shadow-sky-500/20'
-                    : 'bg-slate-900/90 text-slate-400 border-slate-800 hover:text-slate-200'
-                }`}
-              >
-                <span>Ziua {day.dayNumber}</span>
-                <span className="text-[10px] opacity-80">({day.dayName.split(',')[0].slice(0, 3)})</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Filter selectors bar */}
-        <div className="flex items-center justify-between gap-2 bg-slate-900/90 p-2 rounded-2xl border border-slate-800">
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1.5 focus:outline-none w-1/2 font-medium"
-          >
-            <option value="all">Toate Categoriile</option>
-            <option value="beach">🏖️ Plaje</option>
-            <option value="hidden_gem">💎 Perle Ascunse</option>
-            <option value="hike">🥾 Hike & Natură</option>
-            <option value="taverna">🍲 Taverne & Mâncare</option>
-            <option value="culture">🏛️ Cultură & Istorie</option>
-            <option value="sunset">🌅 Apus & Drinks</option>
-          </select>
-
-          <select
-            value={selectedRegion}
-            onChange={(e) => setSelectedRegion(e.target.value)}
-            className="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2.5 py-1.5 focus:outline-none w-1/2 font-medium"
-          >
-            <option value="all">Toate Regiunile</option>
-            <option value="South (Livatho/Lourdas)">📍 Sud (Lângă Vila)</option>
-            <option value="North (Fiskardo/Assos)">📍 Nord (Assos)</option>
-            <option value="West (Paliki/Lixouri)">📍 Vest (Paliki)</option>
-            <option value="East (Sami/Antisamos)">📍 Est (Sami)</option>
-            <option value="Central (Argostoli/Ainos)">📍 Centru (Argostoli)</option>
-          </select>
-
-          <button
-            onClick={onOpenAddModal}
-            title="Adaugă un card nou"
-            className="p-2 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 border border-sky-500/30 text-sky-400 font-bold shrink-0 transition"
-          >
-            <Plus className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* PROGRESS TRACKER & ACTION TOAST */}
-      <div className="space-y-1">
-        <div className="flex items-center justify-between text-xs text-slate-400 px-1">
-          <span className="font-medium text-slate-300">
-            Carduri: <strong>{swipedByCount} / {totalCardsInDeck}</strong>
-          </span>
-
-          {swipedByCount > 0 && (
-            <button
-              onClick={onUndoLastVote}
-              className="text-slate-400 hover:text-sky-400 flex items-center gap-1 text-xs font-semibold transition"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              Anulează ultimul vot
-            </button>
-          )}
-        </div>
-
-        <div className="w-full bg-slate-900 rounded-full h-1.5 overflow-hidden border border-slate-800">
-          <div 
-            className="bg-sky-400 h-1.5 rounded-full transition-all duration-300"
-            style={{ width: `${Math.min(100, Math.round((swipedByCount / (totalCardsInDeck || 1)) * 100))}%` }}
-          />
-        </div>
-
-        {lastActionText && (
-          <motion.div
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center py-1 text-xs font-bold text-sky-300 bg-sky-500/10 border border-sky-500/20 rounded-xl"
-          >
-            {lastActionText}
-          </motion.div>
-        )}
-      </div>
-
       {/* SWIPE CARD CONTAINER */}
       <div className="relative w-full aspect-[4/5] max-h-[420px] my-1 flex items-center justify-center">
         <AnimatePresence>
@@ -444,10 +346,7 @@ export const SwipeDeck: React.FC<SwipeDeckProps> = ({
         </div>
       )}
 
-      {/* FOOTER TIP */}
-      <p className="text-[11px] text-slate-500 text-center font-medium">
-        💡 Glisează cardul: Stânga (❌) • Sus (⭐) • Dreapta (❤️)
-      </p>
+
 
     </div>
   );

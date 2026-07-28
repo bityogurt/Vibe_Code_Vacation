@@ -4,7 +4,6 @@ import { SwipeDeck } from './components/SwipeDeck';
 import { ConsensusView } from './components/ConsensusView';
 import { ItineraryView } from './components/ItineraryView';
 import { CarLogisticsView } from './components/CarLogisticsView';
-import { AiAssistant } from './components/AiAssistant';
 import { AddActivityModal } from './components/AddActivityModal';
 import { UserSelectionModal } from './components/UserSelectionModal';
 import { WelcomeScreen } from './components/WelcomeScreen';
@@ -18,7 +17,7 @@ export default function App() {
     return (params.get('room') || 'VILLA-LOUKE').toUpperCase();
   });
 
-  const [activeTab, setActiveTab] = useState<'swipe' | 'consensus' | 'itinerary' | 'cars' | 'ai'>('swipe');
+  const [activeTab, setActiveTab] = useState<'swipe' | 'consensus' | 'itinerary' | 'cars'>('swipe');
   
   const validMemberNames = DEFAULT_MEMBERS.map(m => m.name);
 
@@ -329,7 +328,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 sm:bg-slate-900 text-slate-100 font-sans selection:bg-rose-500 selection:text-white flex justify-center items-start">
       {/* Mobile App Container Frame */}
-      <div className="w-full max-w-md min-h-screen bg-slate-950 sm:border-x sm:border-slate-800/80 sm:shadow-2xl flex flex-col relative pb-20 overflow-x-hidden">
+      <div className="w-full max-w-md min-h-screen bg-slate-950 sm:border-x sm:border-slate-800/80 sm:shadow-2xl flex flex-col relative pb-24 overflow-x-hidden">
         
         {/* Top Header & Bottom Nav */}
         <Navbar
@@ -383,16 +382,9 @@ export default function App() {
               onUpdateMemberCar={handleUpdateMemberCar}
             />
           )}
-
-          {activeTab === 'ai' && (
-            <AiAssistant roomState={roomState} />
-          )}
         </main>
 
-        {/* Minimal Footer */}
-        <footer className="border-t border-slate-900 bg-slate-950 py-3 text-center text-[10px] text-slate-500 shrink-0 mb-12">
-          <p>🇬🇷 Kefalonia Match 2026 • Villa Louke • 20 - 26 Septembrie</p>
-        </footer>
+
       </div>
 
       {/* Modals */}

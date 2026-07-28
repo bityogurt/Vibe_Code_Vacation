@@ -221,7 +221,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare gratuită mare pentru autocare și mașini.',
     description: 'Minune a lumii! Lac turcoaz în interiorul unei peșteri unde tavanul s-a prăbușit. Soarele amiezii creează raze de lumină de basm pe apă.',
     tags: ['Must-See', 'Tur cu Barca', 'Miracol Natural', 'Fotografii Top'],
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=800&q=80',
     highlights: ['Ghid local cu barca cu vâsle', 'Apa ireal de transparentă', 'Legenda nimfelor grecești'],
     bestTimeOfDay: 'Afternoon' // 11:30 - 13:30 best light
   },
@@ -238,7 +238,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare umbrită mare.',
     description: 'Peșteră impresionantă de stalactite și stalagmite vechi de mii de ani, cu o acustică atât de perfectă încât s-au ținut concerte de operă!',
     tags: ['Peșteră', 'Răcoare', 'Apostoli Istorici', 'Acustică uimitoare'],
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80',
     highlights: ['Temperatura răcoroasă constantă (18°C)', 'Sala mare a acusticii', 'Aproape de Melissani'],
     bestTimeOfDay: 'Anytime'
   },
@@ -514,7 +514,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare la poalele castelului în satul Travliata.',
     description: 'Veche capitală medievală a Kefaloniei. Ziduri bizantine și venețiene impecabile cu panoramă asupra câmpiilor Livatho și mării.',
     tags: ['Castel Medieval', 'Panoramă 360°', 'Foarte Aproape de Vile', 'Cafenea la Castel'],
-    imageUrl: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=800&q=80',
     highlights: ['Panorama asupra insulei Zakynthos', 'Cafeneaua Il Borgo cu prăjituri grozave', 'Istorie bizantină'],
     bestTimeOfDay: 'Late Afternoon'
   },
@@ -546,9 +546,9 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     distanceFromVillaLouke: '48 mins drive',
     carParkingDifficulty: 'Easy',
     carLogisticsNote: 'Parcare pe marginea stâncii în fața mănăstirii.',
-    description: 'Mănăstire spectaculoasă suspendată la 100 metri deasupra mării pe o stâncă verticală în vestul insulei Paliki. Locul cu cel mai dramatic apus din insulă!',
+    description: 'Mănăstire spectaculos suspendată la 100 metri deasupra mării pe o stâncă verticală în vestul insulei Paliki. Locul cu cel mai dramatic apus din insulă!',
     tags: ['Pe Stâncă', 'Apus Spectaculos', 'Liniște Spirituală', 'Vederea Mării'],
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1548625361-183060161406?auto=format&fit=crop&w=800&q=80',
     highlights: ['Stânca abruptă spre marea deschisă', 'Apusul soarelui care se scufundă în orizont', 'Muzeul mănăstiri'],
     bestTimeOfDay: 'Sunset'
   },
@@ -565,7 +565,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare de-a lungul pieței de pește din Argostoli.',
     description: 'Dimineața, între orele 08:30 - 11:00, barcăagiii de pește curăță peștele în port. Țestoase gigantice Caretta-Caretta vin chiar la mal pentru hrană!',
     tags: ['Țestoase Gigant', 'Gratuit', 'Dimineața', 'Copii & Foto'],
-    imageUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=800&q=80',
     highlights: ['Țestoase de peste 1 metru lungime', 'Piața de pește proaspăt', 'Brunch pe faleză'],
     bestTimeOfDay: 'Morning'
   },
@@ -582,7 +582,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Lângă teatrul municipal din Argostoli.',
     description: 'O călătorie emoționantă în vremurile nobiliare ale Kefaloniei de dinaintea marelui cutremur din 1953. Costume, hărți vechi și fotografii istorice.',
     tags: ['Istorie', 'Costume Tradiționale', 'Cutremurul din 1953', 'Răcoare'],
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=800&q=80',
     highlights: ['Costume tradiționale brodate cu aur', 'Hărți maritime vechi', 'Bilet ieftin'],
     bestTimeOfDay: 'Morning'
   },
@@ -601,7 +601,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare chiar lângă far la capătul drumului de coastă.',
     description: 'Far circular alb cu 20 de coloane dorice construit de englezi în 1828. Loc emblematic pentru fotografiat apusul de soare.',
     tags: ['Far Istoric', 'Apus de Soare', 'Fotografie', 'Gratuit'],
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80',
     highlights: ['Coloane dorice albe', 'Apus peste golful Lixouri', 'Barul Katavothres la 2 minute'],
     bestTimeOfDay: 'Sunset'
   },
@@ -652,7 +652,7 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Super aproape de Villa Louke!',
     description: 'Loc ascuns pe stâncile din Spartia cu piscină privată, băuturi ieftine și vedere directă spre mare. Puteți face baie în piscină dacă comandați un drink!',
     tags: ['Lângă Cazare', 'Piscină cu Vedere', 'Apus pe Stânci', 'Cocktail Ieftin'],
-    imageUrl: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80',
     highlights: ['Piscină cu vedere la mare', 'Doar 5 minute de vila noastră', 'Atmosferă super relaxantă'],
     bestTimeOfDay: 'Sunset'
   },
