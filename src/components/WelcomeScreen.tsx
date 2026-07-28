@@ -169,9 +169,6 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ members, onSelectU
                   <Key className="w-3 h-3 text-sky-400" />
                   Introdu Parola:
                 </span>
-                {selectedMember.name.toLowerCase() === 'codin' && (
-                  <span className="text-[10px] font-mono text-cyan-400">Pretornic2</span>
-                )}
               </label>
 
               <input
@@ -181,7 +178,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ members, onSelectU
                   setPasswordInput(e.target.value);
                   setErrorMessage('');
                 }}
-                placeholder={selectedMember.name.toLowerCase() === 'codin' ? 'Parola ta (Pretornic2)...' : 'Parola ta...'}
+                placeholder="Introdu parola..."
                 autoFocus
                 className="w-full bg-slate-950 border border-slate-700 text-white font-mono text-sm rounded-xl p-3 focus:outline-none focus:border-sky-500 transition"
               />

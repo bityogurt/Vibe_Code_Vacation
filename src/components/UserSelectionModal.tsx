@@ -154,7 +154,7 @@ export const UserSelectionModal: React.FC<UserSelectionModalProps> = ({
                   setPasswordInput(e.target.value);
                   setErrorMessage('');
                 }}
-                placeholder={authenticatingMember.name.toLowerCase() === 'codin' ? 'Parolă Admin (Pretornic2)...' : 'Parolă...'}
+                placeholder="Introdu parola..."
                 autoFocus
                 className="w-full bg-slate-950 border border-slate-700 text-white font-mono text-xs rounded-xl p-2.5 focus:outline-none focus:border-sky-500"
               />
