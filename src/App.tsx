@@ -84,11 +84,15 @@ export default function App() {
     }));
 
     try {
-      await fetch(`/api/rooms/${roomId}/update-activity-image`, {
+      const res = await fetch(`/api/rooms/${roomId}/update-activity-image`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ activityId, imageUrl: newImageUrl })
       });
+      const data = await res.json();
+      if (data.success && data.room) {
+        setRoomState(data.room);
+      }
     } catch (err) {
       console.error('Eroare salvare imagine activitate:', err);
     }

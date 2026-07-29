@@ -9,7 +9,7 @@ import { RoomState, Vote, Activity, DayItinerary } from './src/types.js';
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
 // In-memory store for rooms
 const roomsStore: Record<string, RoomState> = {};
@@ -33,12 +33,12 @@ function getOrCreateRoom(roomIdInput: string): RoomState {
       createdAt: Date.now()
     };
   } else {
-    // Sync latest default activity fields (like imageUrls) while preserving custom user activities
+    // Preserve custom user activities and user-modified activity fields (like custom imageUrls)
     const customActs = roomsStore[roomId].activities.filter(a => a.id.startsWith('custom-'));
     roomsStore[roomId].activities = [
       ...INITIAL_ACTIVITIES.map(initAct => {
         const existing = roomsStore[roomId].activities.find(a => a.id === initAct.id);
-        return existing ? { ...existing, imageUrl: initAct.imageUrl } : initAct;
+        return existing ? { ...initAct, ...existing, imageUrl: existing.imageUrl || initAct.imageUrl } : initAct;
       }),
       ...customActs
     ];
@@ -142,6 +142,23 @@ app.post('/api/rooms/:roomId/add-activity', (req, res) => {
 
   room.activities.push(newActivity);
   res.json({ success: true, room, newActivity });
+});
+
+// Update activity image
+app.post('/api/rooms/:roomId/update-activity-image', (req, res) => {
+  const room = getOrCreateRoom(req.params.roomId);
+  const { activityId, imageUrl } = req.body;
+
+  if (!activityId || !imageUrl) {
+    return res.status(400).json({ error: 'Parametri incompleți pentru imagine' });
+  }
+
+  const activity = room.activities.find(a => a.id === activityId);
+  if (activity) {
+    activity.imageUrl = imageUrl;
+  }
+
+  res.json({ success: true, room });
 });
 
 // Lock activities into a day's itinerary
