@@ -30,6 +30,7 @@ export interface Activity {
   description: string;
   tags: string[];
   imageUrl: string;
+  images?: string[]; // 2-3 real images of the location
   highlights: string[];
   bestTimeOfDay: 'Morning' | 'Afternoon' | 'Late Afternoon' | 'Lunchtime' | 'Sunset' | 'Evening' | 'Anytime';
   isCustom?: boolean;

@@ -33,12 +33,18 @@ function getOrCreateRoom(roomIdInput: string): RoomState {
       createdAt: Date.now()
     };
   } else {
-    // Preserve custom user activities and user-modified activity fields (like custom imageUrls)
+    // Preserve custom user activities and user-modified activity fields (like custom imageUrls and images)
     const customActs = roomsStore[roomId].activities.filter(a => a.id.startsWith('custom-'));
     roomsStore[roomId].activities = [
       ...INITIAL_ACTIVITIES.map(initAct => {
         const existing = roomsStore[roomId].activities.find(a => a.id === initAct.id);
-        return existing ? { ...initAct, ...existing, imageUrl: existing.imageUrl || initAct.imageUrl } : initAct;
+        if (!existing) return initAct;
+        return {
+          ...initAct,
+          ...existing,
+          imageUrl: existing.imageUrl || initAct.imageUrl,
+          images: (existing.images && existing.images.length > 0) ? existing.images : (initAct.images || [initAct.imageUrl])
+        };
       }),
       ...customActs
     ];
@@ -144,19 +150,67 @@ app.post('/api/rooms/:roomId/add-activity', (req, res) => {
   res.json({ success: true, room, newActivity });
 });
 
-// Update activity image
+// Update activity image (single or array)
 app.post('/api/rooms/:roomId/update-activity-image', (req, res) => {
   const room = getOrCreateRoom(req.params.roomId);
-  const { activityId, imageUrl } = req.body;
+  const { activityId, imageUrl, images } = req.body;
 
-  if (!activityId || !imageUrl) {
+  if (!activityId) {
     return res.status(400).json({ error: 'Parametri incompleți pentru imagine' });
   }
 
   const activity = room.activities.find(a => a.id === activityId);
   if (activity) {
-    activity.imageUrl = imageUrl;
+    if (imageUrl) activity.imageUrl = imageUrl;
+    if (Array.isArray(images) && images.length > 0) {
+      activity.images = images;
+      if (!imageUrl) activity.imageUrl = images[0];
+    }
   }
+
+  res.json({ success: true, room });
+});
+
+// Update activity images array specifically
+app.post('/api/rooms/:roomId/update-activity-images', (req, res) => {
+  const room = getOrCreateRoom(req.params.roomId);
+  const { activityId, images, mainImageUrl } = req.body;
+
+  if (!activityId || !Array.isArray(images)) {
+    return res.status(400).json({ error: 'Parametri incompleți pentru imagini' });
+  }
+
+  const activity = room.activities.find(a => a.id === activityId);
+  if (activity) {
+    activity.images = images;
+    activity.imageUrl = mainImageUrl || images[0] || activity.imageUrl;
+  }
+
+  res.json({ success: true, room });
+});
+
+// Batch update images for multiple activities
+app.post('/api/rooms/:roomId/batch-update-images', (req, res) => {
+  const room = getOrCreateRoom(req.params.roomId);
+  const { updates } = req.body; // Array of { activityId, images, imageUrl }
+
+  if (!Array.isArray(updates)) {
+    return res.status(400).json({ error: 'Lista de actualizări este invalidă' });
+  }
+
+  updates.forEach(u => {
+    const activity = room.activities.find(a => a.id === u.activityId);
+    if (activity) {
+      if (Array.isArray(u.images) && u.images.length > 0) {
+        activity.images = u.images;
+      }
+      if (u.imageUrl) {
+        activity.imageUrl = u.imageUrl;
+      } else if (activity.images && activity.images.length > 0) {
+        activity.imageUrl = activity.images[0];
+      }
+    }
+  });
 
   res.json({ success: true, room });
 });

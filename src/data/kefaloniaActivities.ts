@@ -15,7 +15,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare mare la bază, dar ajungeți înainte de 10:30 cu ambele mașini pentru locuri bune.',
     description: 'Cea mai celebră plajă din Kefalonia, cu pietricele albe și o apă turcoaz ireală încadrată de stânci abrupte.',
     tags: ['Must-See', 'Pietricele Albe', 'Apus Spectaculos', 'Fotogenică'],
-    imageUrl: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Vedere de sus de la punctul de belvedere', 'Pietricele albe finisate de valuri', 'Ideală pentru înot în ape adânci'],
     bestTimeOfDay: 'Afternoon'
   },
@@ -32,7 +37,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcați mașinile la capătul drumului de pământ și coborâți 10-15 min pe jos prin pădurea de pini.',
     description: 'Golfeț secret umbrit de pini și măslini în nordul insulei. Apă de cleștar, perfectă pentru snorkeling liniștit departe de mulțimi.',
     tags: ['Plajă Ascunsă', 'Snorkeling', 'Umbră Naturală', 'Liniște Totală'],
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Traseu scurt prin pădure de pini', 'Fără șezlonguri sau muzică', 'Ape cristaline cu pești colorați'],
     bestTimeOfDay: 'Morning'
   },
@@ -49,7 +59,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare pe marginea drumului sub măslini. Spațiu generos pentru 2 mașini.',
     description: 'Raiul verde al insulei! Maslini și pini care ajung până aproape de apa caldă și liniștită. Puteți vedea uneori foci foca-foca.',
     tags: ['Umbră Naturală', 'Ape Calme', 'Aproape de Fiskardo', 'Snorkeling'],
-    imageUrl: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Pini care coboară în mare', 'Peșteră laterală de explorat', 'Fără valuri, relaxare pură'],
     bestTimeOfDay: 'Morning'
   },
@@ -66,7 +81,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Drum serpentinat spectaculos. Parcare cu plată (5€) sau pe marginea drumului.',
     description: 'Soră cu Myrtos dar mai intimă! Nisip fin amestecat cu pietricele, ape adânci turcoaz și apusuri de vis pe peninsula Paliki.',
     tags: ['Apus de Vis', 'Valuri', 'Tavernă la Plajă', 'Peisaj Dramatic'],
-    imageUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Baruri de plajă elegante', 'Apus de soare direct în mare', 'Ape de cristal'],
     bestTimeOfDay: 'Sunset'
   },
@@ -83,7 +103,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare imensă gratuită chiar lângă plajă. Acces extrem de ușor pentru ambele mașini.',
     description: 'Plajă unică în lume datorită nisipului roșu-cărămiziu și stâncilor de argilă albă. Oferă împachetări naturale cu nămol terapeutic!',
     tags: ['Nisip Roșu', 'Spa Natural cu Argilă', 'Apă Mică', 'Ușor Accesibilă'],
-    imageUrl: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Măști naturale cu argilă albă', 'Apă caldă și puțin adâncă', 'Muzică lounge și cocktails'],
     bestTimeOfDay: 'Afternoon'
   },
@@ -100,7 +125,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare mare organizată lângă beach bar-uri.',
     description: 'Plaja celebră din filmul Mandolina Căpitanului Corelli. Înconjurată de munți verzi împăduriti și ape de smarald extrem de limpezi.',
     tags: ['Filmat Hollywood', 'Beach Bar', 'Ape de Smarald', 'Pietricele Finisate'],
-    imageUrl: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Șezlonguri confortabile', 'Pădure luxuriantă în spatele plajei', 'Băuturi răcoritoare la șezlong'],
     bestTimeOfDay: 'Morning'
   },
@@ -117,7 +147,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Foarte aproape de cazare! Parcare lungă de-a lungul falezii.',
     description: 'Plaja locală din apropierea vilei noastre! O fâșie lungă de nisip și pietricele fine, privire directă spre insula Zakynthos.',
     tags: ['Lângă Cazare', 'Nisip Fin', 'Taverne pe Faleză', 'Relaxantă'],
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Doar 8 minute de condus', 'Taverne de familie autentice', 'Vedere spectaculoasă spre Muntele Ainos'],
     bestTimeOfDay: 'Late Afternoon'
   },
@@ -134,7 +169,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcați în satul Antipata și mergeți 600m prin pădure umbroasă de chiparoși.',
     description: 'Perlă ascunsă la nordul insulei. O peșteră marină oferă umbră naturală pe plajă. Ape liniștite ca un lac de munte.',
     tags: ['Sălbatică', 'Peșteră pe Plajă', 'Drumeție Scurtă', 'Ape Calme'],
-    imageUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Peșteră umbroasă naturală', 'Fără facilități comerciale', 'Rai pentru snorkeling'],
     bestTimeOfDay: 'Morning'
   },
@@ -151,7 +191,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare mică chiar lângă golfeț.',
     description: 'Mica plajă cu bolovani albi sculptați de valuri și ape turcoaz adânci. Un favorit al localnicilor pentru sărituri în apă.',
     tags: ['Sărituri în Apă', 'Pietre Albe', 'Nu e Aglomerat', 'Loc Secret'],
-    imageUrl: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Stânci perfecte pentru sărituri', 'Claritate incredibilă a apei', 'Liniște garantată'],
     bestTimeOfDay: 'Afternoon'
   },
@@ -168,7 +213,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare gratuită pietruită la intrarea pe plajă.',
     description: 'Golf spectaculos mărginit de platforme de calcar plat pe care poți sta la plajă ca pe un șezlong natural.',
     tags: ['Platforme de Piatră', 'Aproape de Fiskardo', 'Snorkeling Top', 'Peisaj Nordic'],
-    imageUrl: 'https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1515238152791-8216bfdf89a7?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Sărituri ușoare de pe stâncile plate', 'Ape limpezi ca sticla', 'Canteen camionetă cu gustări excelente'],
     bestTimeOfDay: 'Morning'
   },
@@ -185,7 +235,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Drum izolat. Priveliște genială de sus de pe stânci.',
     description: 'Rivala mai puțin cunoscută și mai sălbatică a plajei Myrtos! Stânci uimitoare de 200m și mare de un albastru profund.',
     tags: ['Sălbăticie', 'Stânci Gigant', 'Fotografie', 'Fără Turiști'],
-    imageUrl: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Priveliște panoramică incredibilă', 'Natură neimblânzită', 'Apus de soare magic'],
     bestTimeOfDay: 'Sunset'
   },
@@ -202,7 +257,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare mare în pădurea de pini de deasupra plajei.',
     description: 'Nisip fin auriu, ape calde, muzică relaxantă, sporturi nautice și cocktailuri aproape de Argostoli.',
     tags: ['Nisip Auriu', 'Beach Bar', 'Cocktails', 'Distracție'],
-    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Muzică bună și atmosferă de vacanță', 'Nisip extrem de fin fără pietre', 'Aproape de capitală'],
     bestTimeOfDay: 'Afternoon'
   },
@@ -221,7 +281,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare gratuită mare pentru autocare și mașini.',
     description: 'Minune a lumii! Lac turcoaz în interiorul unei peșteri unde tavanul s-a prăbușit. Soarele amiezii creează raze de lumină de basm pe apă.',
     tags: ['Must-See', 'Tur cu Barca', 'Miracol Natural', 'Fotografii Top'],
-    imageUrl: 'https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Ghid local cu barca cu vâsle', 'Apa ireal de transparentă', 'Legenda nimfelor grecești'],
     bestTimeOfDay: 'Afternoon'
   },
@@ -238,7 +303,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare umbrită mare.',
     description: 'Peșteră impresionantă de stalactite și stalagmite vechi de mii de ani, cu o acustică atât de perfectă încât s-au ținut concerte de operă!',
     tags: ['Peșteră', 'Răcoare', 'Apostoli Istorici', 'Acustică uimitoare'],
-    imageUrl: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1504386106331-3e4e71712b38?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Temperatura răcoroasă constantă (18°C)', 'Sala mare a acusticii', 'Aproape de Melissani'],
     bestTimeOfDay: 'Anytime'
   },
@@ -255,7 +325,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Urcare cu ambele mașini până la stația de radare/parcul național Megas Soros.',
     description: 'Urcați la cel mai înalt vârf din Marea Ionică (1628m)! Pădure unică de brad negru de Kefalonia și șansa de a vedea cai sălbatici.',
     tags: ['Drumeție', 'Aer Curat', 'Vârf de Munte', 'Cai Sălbatici', 'Panorama 360°'],
-    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Panorama asupra tuturor insulelor ionice', 'Miros superb de pini și brad', 'Traseu bine marcat'],
     bestTimeOfDay: 'Morning'
   },
@@ -272,7 +347,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcați la intrarea în satul Assos pe marginea drumului.',
     description: 'Piață venețiană din secolul XVI fortificată pe o peninsulă stâncoasă. Drum pietruit umbrit de chiparoși cu priveliști de vis spre golful Assos.',
     tags: ['Istorie Venețiană', 'Drumeție Scenică', 'Vedere Panoramică', 'Ruine'],
-    imageUrl: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Porțile mari ale cetății venețiene', 'Punct de belvedere spre satul pastelat', 'Intrare gratuită'],
     bestTimeOfDay: 'Morning'
   },
@@ -289,7 +369,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare gratuită lângă faleza gării din Argostoli.',
     description: 'Cel mai lung pod de piatră peste apă din lume (built 1813). Plimbare pietonală romantică cu vedere spre obeliscul din mijlocul golfului.',
     tags: ['Pod Istoric', 'Plimbare de Seară', 'Fotografii', 'Lângă Capitală'],
-    imageUrl: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Observare țestoase în apă sub pod', 'Iluminat arhitectural seara', 'Zonă exclusiv pietonală'],
     bestTimeOfDay: 'Evening'
   },
@@ -306,7 +391,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare ușoară chiar pe faleză.',
     description: 'Lac cu apă dulce chiar pe malul mării! Apa circulă subteran din Katavothres (Argostoli) traversând toată insula până aici.',
     tags: ['Fenomen Geologic', 'Rățuște și Lebede', 'Tavernă pe Apă', 'Liniștit'],
-    imageUrl: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Moara veche de lemn care se rotește', 'Oază de verdeață', 'Taverna Zervas lângă lac'],
     bestTimeOfDay: 'Morning'
   },
@@ -323,7 +413,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Super aproape de vilele din Spartia/Livatho.',
     description: 'Formațiuni stâncoase plate de calcar galben pe care te poți bronza și de pe care poți sări în apă de un turcoaz fluorescent.',
     tags: ['Aproape de Cazare', 'Sărituri în Apă', 'Fără Turiști', 'Ape Cristaline'],
-    imageUrl: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Platforme calcaroase naturale', 'Ape foarte adânci și limpezi', 'Răsărit / apus spectaculos'],
     bestTimeOfDay: 'Afternoon'
   },
@@ -340,7 +435,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Lăsați ambele mașini în parcarea portului din Sami sau Skala.',
     description: 'Croazieră memorabilă spre patria lui Ulise (Ithaka) sau spre celebra plajă Navagio din Zakynthos, cu opriri de înot în golfeuri izolate.',
     tags: ['Croazieră', 'Insula Ithaka', 'Înot din Barca', 'Prânz Inclus'],
-    imageUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Portul pitoresc Vathy (Ithaka)', 'Plaja Gidaki cu ape de azur', 'Muzică și atmosferă de petrecere pe vas'],
     bestTimeOfDay: 'Morning'
   },
@@ -359,7 +459,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare privată spațioasă lângă plaja Avithos.',
     description: 'Tavernă gătită cu dragoste de familie chiar pe malul mării! Pește proaspăt prins zilnic, plăcintă tradițională de carne (Kefalonitiki Kreatopita) și vin roșu local.',
     tags: ['Ieftin & Bun', 'Lângă Cazare', 'Pește Proaspăt', 'Mâncare Tradițională'],
-    imageUrl: 'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Kreatopita (plăcintă de carne locală)', 'Calamar prăjit fraged', 'Apus romantic pe terasă'],
     bestTimeOfDay: 'Evening'
   },
@@ -376,7 +481,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcați pe faleză și mergeți 2 minute pe jos în piața centrală.',
     description: 'Cel mai bun gyros și souvlaki din Argostoli servite pe hârtie de copt (Ladokolla). Porții uriașe, carne suculentă și prețuri excelente pentru 5 oameni hungry!',
     tags: ['Street Food', 'Buget Mic', 'Gyros Tradițional', 'Porții Generoase'],
-    imageUrl: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Gyros pui/porc la 4.5€', 'Cartofi prăjiți de casă cu oregano', 'Servire rapidă'],
     bestTimeOfDay: 'Evening'
   },
@@ -393,7 +503,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Așezată în piațeta centrală din Assos.',
     description: 'Tavernă grecească autentică așezată sub un platan secular uriaș. Musaca gătită la cuptor de lut, tzatziki de casă și chifteluțe de dovlecel (Kolokithokeftedes).',
     tags: ['Platan Secular', 'Musaca Autentică', 'Satul Assos', 'Atmosferă Relaxantă'],
-    imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Tzatziki cremos cu usturoi local', 'Kolokithokeftedes crocante', 'Atmosferă de sat grecesc adormit'],
     bestTimeOfDay: 'Afternoon'
   },
@@ -410,7 +525,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare gratuită pe faleză.',
     description: 'Terasă de lemn construită direct pe piloni peste apa mării! Mănânci fructe de mare proaspete în timp ce peștii înoată sub picioarele tale.',
     tags: ['Deasupra Apei', 'Fructe de Mare', 'Romantic', 'Vedere spre Golful Argostoli'],
-    imageUrl: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Spagete cu creveți și ouzo', 'Caracatiță la grătar', 'Marea se aude sub podeaua de lemn'],
     bestTimeOfDay: 'Evening'
   },
@@ -427,7 +547,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcați la intrarea în portul Fiskardo.',
     description: 'Cea mai renumită tavernă din nordul insulei, frecventată și de vedete. Rețete tradiționale de pește reinterpretate impecabil.',
     tags: ['Celebră', 'Port Venețian', 'Pește Proaspăt', 'Atmosferă Cosmopolită'],
-    imageUrl: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Orizont cu yahturi de lux', 'Ied la cuptor cu ierburi de munte', 'Vin alb reci de Robola'],
     bestTimeOfDay: 'Evening'
   },
@@ -444,9 +569,14 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare privată mare la tavernă.',
     description: 'Gătit ca la mama acasă în peninsula Paliki. Pescarii aduc captura direct la bucătărie. Prețuri extrem de ieftine comparativ cu porturile mari.',
     tags: ['Buget Excelent', 'Căldură Grecească', 'Gătit Tradițional', 'Lângă Plajă'],
-    imageUrl: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Calamar proaspăt prăjit la 9€', 'Salată grecească cu brânză Feta locală', 'Desert din partea casei'],
-    bestTimeOfDay: 'Lunchtime' as any
+    bestTimeOfDay: 'Lunchtime'
   },
   {
     id: 'act-27',
@@ -461,7 +591,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Doar 4 minute de mers cu mașina de la vilele noastre!',
     description: 'Tavernă ascunsă în piața mică a satului Spartia. Mâncare gătită zilnic la ceaun, grătare delicioase și atmosferă ultra-locală.',
     tags: ['Piața Satului', 'Ieftin & Local', 'Lângă Cazare', 'Grătar de Lemn'],
-    imageUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1529006557810-274b9b2fc783?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Souvlaki uriaș de porc/pui', 'Saganaki (brânză prăjită cu miere)', 'Vinul casei servit la carafă'],
     bestTimeOfDay: 'Evening'
   },
@@ -478,7 +613,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare chiar la intrarea în faleză.',
     description: 'Restaurant modern cu terasă suspendată peste apele plajei Lourdas. Muzică ambientală excelentă, risotto delicios și cocktailuri răcoritoare.',
     tags: ['Terasă Suspendată', 'Vedere la Marea Ionică', 'Cocktails', 'Mâncare Gustoasă'],
-    imageUrl: 'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Paste cu fructe de mare', 'Mojito cu mentă proaspătă', 'Briză răcoroasă de seară'],
     bestTimeOfDay: 'Evening'
   },
@@ -497,7 +637,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare uriașă la mănăstire și cramă.',
     description: 'Inima spirituală și vinicolă a insulei! Vizitați platanii uriași plantați de Sfântul Gerasimos și crama cooperativă pentru degustare gratuită din celebrul vin alb Robola.',
     tags: ['Degustare Vin', 'Cultură & Credință', 'Platani Giganți', 'Gratuit/Ieftin'],
-    imageUrl: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Degustare 4 tipuri de vin Robola', 'Copacul de 400 de ani al sfântului', 'Biserica cu fresce de aur'],
     bestTimeOfDay: 'Morning'
   },
@@ -514,7 +659,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare la poalele castelului în satul Travliata.',
     description: 'Veche capitală medievală a Kefaloniei. Ziduri bizantine și venețiene impecabile cu panoramă asupra câmpiilor Livatho și mării.',
     tags: ['Castel Medieval', 'Panoramă 360°', 'Foarte Aproape de Vile', 'Cafenea la Castel'],
-    imageUrl: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Panorama asupra insulei Zakynthos', 'Cafeneaua Il Borgo cu prăjituri grozave', 'Istorie bizantină'],
     bestTimeOfDay: 'Late Afternoon'
   },
@@ -531,7 +681,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Așteptați-vă la aglomerație în port seara. Parcați în parcările exterioare.',
     description: 'Singurul sat din Kefalonia care a supraviețuit intact cutremurului din 1953! Case pastelate venețiene, flori de bougainvillea și port cosmopolit.',
     tags: ['Arhitectură Venețiană', 'Port Chic', 'Plimbare de Seară', 'Gelaterii Top'],
-    imageUrl: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Aleea cu gelaterii artizanale', 'Farul venețian vechi', 'Yahturi impresionante'],
     bestTimeOfDay: 'Evening'
   },
@@ -548,7 +703,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare pe marginea stâncii în fața mănăstirii.',
     description: 'Mănăstire spectaculos suspendată la 100 metri deasupra mării pe o stâncă verticală în vestul insulei Paliki. Locul cu cel mai dramatic apus din insulă!',
     tags: ['Pe Stâncă', 'Apus Spectaculos', 'Liniște Spirituală', 'Vederea Mării'],
-    imageUrl: 'https://images.unsplash.com/photo-1548625361-183060161406?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1548625361-183060161406?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1548625361-183060161406?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Stânca abruptă spre marea deschisă', 'Apusul soarelui care se scufundă în orizont', 'Muzeul mănăstiri'],
     bestTimeOfDay: 'Sunset'
   },
@@ -565,7 +725,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare de-a lungul pieței de pește din Argostoli.',
     description: 'Dimineața, între orele 08:30 - 11:00, barcăagiii de pește curăță peștele în port. Țestoase gigantice Caretta-Caretta vin chiar la mal pentru hrană!',
     tags: ['Țestoase Gigant', 'Gratuit', 'Dimineața', 'Copii & Foto'],
-    imageUrl: 'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1518467166778-b88f373ffec7?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Țestoase de peste 1 metru lungime', 'Piața de pește proaspăt', 'Brunch pe faleză'],
     bestTimeOfDay: 'Morning'
   },
@@ -582,7 +747,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Lângă teatrul municipal din Argostoli.',
     description: 'O călătorie emoționantă în vremurile nobiliare ale Kefaloniei de dinaintea marelui cutremur din 1953. Costume, hărți vechi și fotografii istorice.',
     tags: ['Istorie', 'Costume Tradiționale', 'Cutremurul din 1953', 'Răcoare'],
-    imageUrl: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Costume tradiționale brodate cu aur', 'Hărți maritime vechi', 'Bilet ieftin'],
     bestTimeOfDay: 'Morning'
   },
@@ -601,7 +771,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare chiar lângă far la capătul drumului de coastă.',
     description: 'Far circular alb cu 20 de coloane dorice construit de englezi în 1828. Loc emblematic pentru fotografiat apusul de soare.',
     tags: ['Far Istoric', 'Apus de Soare', 'Fotografie', 'Gratuit'],
-    imageUrl: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Coloane dorice albe', 'Apus peste golful Lixouri', 'Barul Katavothres la 2 minute'],
     bestTimeOfDay: 'Sunset'
   },
@@ -618,7 +793,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Așezat pe stradă pietonală din centrul Argostoli.',
     description: 'Cel mai apreciat bar de cocktailuri artizanale din insulă! Barmani premiați, siropuri făcute în casă și muzică funk/jazz excelentă.',
     tags: ['Cocktails Artizanale', 'Muzică Funk', 'Viață de Noapte', 'Atmosferă Hip'],
-    imageUrl: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1578474846511-04ba529f0b88?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Cocktailuri cu miere și plante locale', 'Alee pietonală animată', 'Loc grozav pentru grupuri'],
     bestTimeOfDay: 'Evening'
   },
@@ -635,7 +815,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare privată pazită mare.',
     description: 'Beach club exclusivist pe plaja Makris Gialos. Canapele albe de pânză pe nisip, DJ set la apus și șampanie rece.',
     tags: ['Beach Lounge', 'DJ Set', 'Apus cu Muzică', 'Vibe de Vacanță'],
-    imageUrl: 'https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1510525009512-ad7fc13eefab?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Canapele direct pe nisip', 'Muzică Deep House at sunset', 'Aperol Spritz delicios'],
     bestTimeOfDay: 'Sunset'
   },
@@ -652,7 +837,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Super aproape de Villa Louke!',
     description: 'Loc ascuns pe stâncile din Spartia cu piscină privată, băuturi ieftine și vedere directă spre mare. Puteți face baie în piscină dacă comandați un drink!',
     tags: ['Lângă Cazare', 'Piscină cu Vedere', 'Apus pe Stânci', 'Cocktail Ieftin'],
-    imageUrl: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Piscină cu vedere la mare', 'Doar 5 minute de vila noastră', 'Atmosferă super relaxantă'],
     bestTimeOfDay: 'Sunset'
   },
@@ -669,7 +859,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare pe alveolele special amenajate pe marginea drumului suspendat.',
     description: 'Platformă de observare suspendată la sute de metri deasupra mării. Cel mai căutat loc de poze din Grecia când soarele apune în marea turcoaz.',
     tags: ['Top Poze Instagram', 'Apus de Neuitat', 'Panoramă Divină', 'Gratuit'],
-    imageUrl: 'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Fotografii de colecție cu grupul', 'Vedere panoramică 180 grade', 'Senzație de zbor deasupra mării'],
     bestTimeOfDay: 'Sunset'
   },
@@ -686,7 +881,12 @@ export const INITIAL_ACTIVITIES: Activity[] = [
     carLogisticsNote: 'Parcare la tavernă pe stâncă.',
     description: 'Priviți apusul de pe stâncile mănăstirii Kipoureon, apoi mâncați preparate tradiționale grecești la taverna Erasmus suspendată deasupra valurilor.',
     tags: ['Apus pe Stâncă', 'Tavernă Suspendată', 'Loc Romantic', 'Mâncare Delicioasă'],
-    imageUrl: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1000&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1548625361-183060161406?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=1200&q=80'
+    ],
     highlights: ['Soarele apune direct în valuri', 'Souvlaki de sabie și calamari', 'Vin roșu de Paliki'],
     bestTimeOfDay: 'Sunset'
   }

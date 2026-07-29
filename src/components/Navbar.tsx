@@ -3,13 +3,14 @@ import {
   Car, 
   Calendar, 
   Flame, 
-  BarChart3 
+  BarChart3,
+  Camera
 } from 'lucide-react';
 import { UserProfile, RoomState, DayItinerary } from '../types';
 
 interface NavbarProps {
-  activeTab: 'swipe' | 'consensus' | 'itinerary' | 'cars';
-  setActiveTab: (tab: 'swipe' | 'consensus' | 'itinerary' | 'cars') => void;
+  activeTab: 'swipe' | 'consensus' | 'itinerary' | 'cars' | 'photos';
+  setActiveTab: (tab: 'swipe' | 'consensus' | 'itinerary' | 'cars' | 'photos') => void;
   currentRoom: RoomState;
   currentUser: UserProfile;
   onOpenUserModal: () => void;
@@ -30,7 +31,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   );
 
   const tabs: {
-    id: 'swipe' | 'consensus' | 'itinerary' | 'cars';
+    id: 'swipe' | 'consensus' | 'itinerary' | 'cars' | 'photos';
     label: string;
     icon: React.ComponentType<{ className?: string }>;
     activeColor: string;
@@ -65,6 +66,13 @@ export const Navbar: React.FC<NavbarProps> = ({
       icon: Car,
       activeColor: 'text-amber-400',
       glowColor: 'from-amber-500/30 to-amber-500/5 border-amber-400/40 shadow-amber-500/20'
+    },
+    {
+      id: 'photos',
+      label: 'Poze',
+      icon: Camera,
+      activeColor: 'text-cyan-400',
+      glowColor: 'from-cyan-500/30 to-cyan-500/5 border-cyan-400/40 shadow-cyan-500/20'
     }
   ];
 
@@ -127,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* FLOATING LIQUID GLASS BOTTOM EQUALLY SPLIT TAB BAR */}
       <nav className="fixed bottom-2 left-2 right-2 z-40 max-w-md mx-auto">
-        <div className="bg-slate-950/80 backdrop-blur-2xl border border-white/15 rounded-2xl sm:rounded-3xl p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.2)] grid grid-cols-4 gap-1 text-center w-full">
+        <div className="bg-slate-950/80 backdrop-blur-2xl border border-white/15 rounded-2xl sm:rounded-3xl p-1.5 shadow-[0_12px_40px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.2)] grid grid-cols-5 gap-1 text-center w-full">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;

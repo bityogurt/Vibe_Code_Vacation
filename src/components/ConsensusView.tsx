@@ -208,11 +208,11 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
           activityConsensusList.map((item, index) => (
             <div
               key={item.activity.id}
-              className={`bg-slate-900 border ${
+              className={`bg-slate-950/60 backdrop-blur-xl border ${
                 item.scheduledDayNumber 
-                  ? 'border-emerald-500/30 bg-emerald-950/10' 
-                  : 'border-slate-800'
-              } rounded-2xl p-3.5 space-y-3 transition shadow-md`}
+                  ? 'border-emerald-500/40 bg-emerald-950/20' 
+                  : 'border-white/15'
+              } rounded-2xl p-3.5 space-y-3 transition shadow-lg hover:border-white/25`}
             >
               {/* Card Header & Rank */}
               <div className="flex items-start gap-3">
@@ -224,11 +224,16 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
                   <img 
                     src={item.activity.imageUrl} 
                     alt={item.activity.title} 
-                    className="w-16 h-16 rounded-xl object-cover border border-slate-800 group-hover:opacity-80 transition"
+                    className="w-16 h-16 rounded-xl object-cover border border-white/20 group-hover:opacity-80 transition shadow-md"
                   />
-                  <span className="absolute top-1 left-1 px-1.5 py-0.2 rounded bg-slate-950/80 backdrop-blur-md text-sky-400 text-[10px] font-black border border-sky-400/20">
+                  <span className="absolute top-1 left-1 px-1.5 py-0.5 rounded-lg bg-slate-950/80 backdrop-blur-md text-cyan-300 text-[10px] font-black border border-cyan-400/30">
                     #{index + 1}
                   </span>
+                  {(item.activity.images?.length || 0) > 1 && (
+                    <span className="absolute bottom-1 right-1 px-1 py-0.5 rounded-lg bg-slate-950/90 backdrop-blur-md text-cyan-300 text-[9px] font-black border border-cyan-400/30">
+                      📸 {item.activity.images?.length}
+                    </span>
+                  )}
                   <div className="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-xl transition">
                     <Camera className="w-5 h-5 text-sky-400" />
                   </div>
@@ -243,44 +248,44 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
                       {onOpenEditImage && (
                         <button
                           onClick={() => onOpenEditImage(item.activity)}
-                          className="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                          className="p-1 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition backdrop-blur-md border border-white/10"
                           title="Schimbă Imaginea"
                         >
                           <Camera className="w-3.5 h-3.5 text-sky-400" />
                         </button>
                       )}
-                      <span className="text-xs font-black text-sky-400">
+                      <span className="text-xs font-black text-cyan-300 bg-cyan-500/15 border border-cyan-400/30 px-2 py-0.5 rounded-lg">
                         {item.approvalPercentage}%
                       </span>
                     </div>
                   </div>
 
-                  <p className="text-[11px] text-slate-400 mt-0.5">
-                    {item.activity.region} • <span className="text-amber-300">{item.activity.distanceFromVillaLouke}</span>
+                  <p className="text-[11px] text-slate-300/90 mt-0.5">
+                    {item.activity.region} • <span className="text-amber-300 font-semibold">{item.activity.distanceFromVillaLouke}</span>
                   </p>
 
                   {/* Liked Members Avatars */}
                   <div className="flex items-center gap-1 mt-1.5 flex-wrap">
-                    <span className="text-[10px] text-slate-500 font-medium">Votat de:</span>
+                    <span className="text-[10px] text-slate-400 font-medium">Votat de:</span>
                     {item.likedMembers.length > 0 ? (
                       item.likedMembers.map((m, idx) => (
                         <span 
                           key={idx}
-                          className={`inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded-md ${m.avatarColor} text-white font-bold text-[9px]`}
+                          className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-md ${m.avatarColor} text-white font-bold text-[9px] shadow-sm`}
                         >
                           {m.name}
                           {m.vote === 'superlike' ? <Star className="w-2.5 h-2.5 fill-amber-300 text-amber-300" /> : <Heart className="w-2.5 h-2.5 fill-white" />}
                         </span>
                       ))
                     ) : (
-                      <span className="text-[10px] text-slate-500 italic">Niciun vot pozitiv</span>
+                      <span className="text-[10px] text-slate-400 italic">Niciun vot pozitiv</span>
                     )}
                   </div>
                 </div>
               </div>
 
               {/* Action Bar for Card */}
-              <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">
+              <div className="pt-2 border-t border-white/10 flex items-center justify-between gap-2 text-xs">
                 {item.scheduledDayNumber ? (
                   <div className="flex items-center gap-1 text-emerald-400 text-xs font-semibold">
                     <CheckCircle2 className="w-4 h-4" />
@@ -291,7 +296,7 @@ export const ConsensusView: React.FC<ConsensusViewProps> = ({
                     <select
                       value={selectedDayToLock}
                       onChange={(e) => setSelectedDayToLock(Number(e.target.value))}
-                      className="bg-slate-950 border border-slate-800 text-slate-300 text-xs rounded-xl px-2 py-2 focus:outline-none flex-1 font-medium"
+                      className="bg-slate-900/80 border border-white/15 text-slate-200 text-xs rounded-xl px-2 py-1.5 focus:outline-none flex-1 font-medium"
                     >
                       {TRIP_DAYS.map(day => (
                         <option key={day.dayNumber} value={day.dayNumber}>

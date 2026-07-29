@@ -4,6 +4,7 @@ import { SwipeDeck } from './components/SwipeDeck';
 import { ConsensusView } from './components/ConsensusView';
 import { ItineraryView } from './components/ItineraryView';
 import { CarLogisticsView } from './components/CarLogisticsView';
+import { AdminPhotoManager } from './components/AdminPhotoManager';
 import { AddActivityModal } from './components/AddActivityModal';
 import { UserSelectionModal } from './components/UserSelectionModal';
 import { EditImageModal } from './components/EditImageModal';
@@ -18,7 +19,7 @@ export default function App() {
     return (params.get('room') || 'VILLA-LOUKE').toUpperCase();
   });
 
-  const [activeTab, setActiveTab] = useState<'swipe' | 'consensus' | 'itinerary' | 'cars'>('swipe');
+  const [activeTab, setActiveTab] = useState<'swipe' | 'consensus' | 'itinerary' | 'cars' | 'photos'>('swipe');
   
   const validMemberNames = DEFAULT_MEMBERS.map(m => m.name);
 
@@ -398,7 +399,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 sm:bg-slate-900 text-slate-100 font-sans selection:bg-rose-500 selection:text-white flex justify-center items-start">
       {/* Mobile App Container Frame */}
-      <div className="w-full max-w-md min-h-screen bg-slate-950 sm:border-x sm:border-slate-800/80 sm:shadow-2xl flex flex-col relative pb-24 overflow-x-hidden">
+      <div className={`w-full ${activeTab === 'photos' ? 'max-w-3xl' : 'max-w-md'} min-h-screen bg-slate-950 sm:border-x sm:border-slate-800/80 sm:shadow-2xl flex flex-col relative pb-24 overflow-x-hidden transition-all duration-300`}>
         
         {/* Top Header & Bottom Nav */}
         <Navbar
@@ -456,6 +457,15 @@ export default function App() {
             <CarLogisticsView
               roomState={roomState}
               onUpdateMemberCar={handleUpdateMemberCar}
+            />
+          )}
+
+          {activeTab === 'photos' && (
+            <AdminPhotoManager
+              roomState={roomState}
+              currentUser={currentUser}
+              roomId={roomId}
+              onUpdateRoomState={setRoomState}
             />
           )}
         </main>
